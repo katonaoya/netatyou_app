@@ -1,2 +1,17 @@
-h1 Users#new
-p Find me in app/views/users/new.html.slim
+h1 ユーザー登録
+
+= form_with model: @user, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form_control'
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form_control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: 'form_control'
+  .form-group
+    = f.label :type
+    = f.select :type, [["芸人", "芸人"], ["スタッフ", "スタッフ"]], class: 'form_control'
+  = f.submit '登録する', class: 'btn btn-primary'
+
