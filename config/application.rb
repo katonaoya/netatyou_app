@@ -11,6 +11,11 @@ module NetatyouApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.generators do |g|
+      g.assets  false
+      g.test_framework    false
+      g.skip_routes   true
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -20,10 +25,6 @@ module NetatyouApp
     # config.eager_load_paths << Rails.root.join("extras")
   end
 
-  config.generators do |g|
-    g.assets  false
-    g.test_framework    false
-    g.skip_routes   true
-  end
+
 
 end
