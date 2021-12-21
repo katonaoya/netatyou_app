@@ -19,4 +19,11 @@ module NetatyouApp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end
+
+  config.generators do |g|
+    g.assets  false
+    g.test_framework    false
+    g.skip_routes   true
+  end
+
 end
