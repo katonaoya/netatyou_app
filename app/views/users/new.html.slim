@@ -1,5 +1,10 @@
 h1 ユーザー登録
 
+- if @user.errors.present?
+  ul#error_explanation
+    - @user.errors.full_messages.each do |message|
+      li= message
+
 = form_with model: @user, local: true do |f|
   .form-group
     = f.label :name
@@ -11,7 +16,7 @@ h1 ユーザー登録
     = f.label :password
     = f.password_field :password, class: 'form_control'
   .form-group
-    = f.label :type
-    = f.select :type, [["芸人", "芸人"], ["スタッフ", "スタッフ"]], class: 'form_control'
-  = f.submit '登録する', class: 'btn btn-primary'
+    = f.label :role
+    = f.select :role, [["芸人", "芸人"], ["スタッフ", "スタッフ"]], class: 'form_control'
+  = f.submit nil, class: 'btn btn-primary'
 

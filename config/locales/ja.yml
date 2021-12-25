@@ -14,7 +14,7 @@ ja:
         name: 名前
         password: パスワード
         email: メールアドレス
-        type: 属性
+        role: 属性
   date:
     abbr_day_names:
     - 日
