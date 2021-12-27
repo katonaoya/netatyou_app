@@ -10,7 +10,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.text :profile
       
       t.timestamps
+      
 
+      t.references :unit, foreign_key: true
       t.index :email, unique: true
     end
   end

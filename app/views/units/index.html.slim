@@ -1,0 +1,4 @@
+h1 ユニット一覧
+
+- @units.each do |unit|
+  = link_to unit.name, unit_path(unit.id), class: 'nav-link'

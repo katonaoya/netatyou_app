@@ -1,0 +1,16 @@
+h1 = @unit.name
+
+= Unit.human_attribute_name(:image)
+br
+= @unit.image.attached ? @unit.image : "画像が設定されていません"
+br
+= "#{Unit.human_attribute_name(:kana)}:　#{@unit.kana}"
+br
+br
+= "#{Unit.human_attribute_name(:birthday)}:　#{@unit.birthday}"
+br
+br
+= "#{Unit.human_attribute_name(:belongs)}:　#{@unit.belongs}"
+br
+br
+= link_to '編集', edit_unit_path, class: 'btn btn-primary'

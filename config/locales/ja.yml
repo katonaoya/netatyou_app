@@ -9,6 +9,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      unit: ユニット
     attributes:
       user:
         name: 名前
@@ -18,6 +19,12 @@ ja:
         profile: プロフィール
         skill: 特技
         birthday: 生年月日
+      unit:
+        name: ユニット名
+        kana: カナ
+        belongs: 所属
+        birthday: 結成年月日
+        image: 画像
   date:
     abbr_day_names:
     - 日
