@@ -4,7 +4,7 @@ class UnitsController < ApplicationController
   end
 
   def create
-    @unit = Unit.new(unit_params)
+    @unit = Unit.new(unit_params.merge(user_id: current_user.id))
     if @unit.save
       redirect_to unit_path(@unit), notice: "#{@unit.name}が登録されました。"
     else
@@ -36,7 +36,7 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :kana, :belongs, :birthday, :image)
+    params.require(:unit).permit(:name, :kana, :belongs, :birthday, :image, user_ids: [])
   end
 
 end

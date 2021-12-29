@@ -13,11 +13,14 @@ html
       .navbar-brand ネタ帳
 
       ul.navbar-nav.ml-auto
-        li.nav-item= link_to 'ユーザー登録', new_user_path, class: 'nav-link'
-        li.nav-item= link_to 'プロフィール', user_path(1), class: 'nav-link'
+      - if current_user
+        li.nav-item= link_to 'プロフィール', user_path(current_user.id), class: 'nav-link'
         li.nav-item= link_to 'ユニット作成', new_unit_path, class: 'nav-link'
         li.nav-item= link_to 'ユニット一覧', units_path, class: 'nav-link'
-        li.nav-item= link_to 'ユニット紹介', unit_path(1), class: 'nav-link'
+        li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+      - else
+        li.nav-item= link_to 'ユーザー登録', new_user_path, class: 'nav-link'
+        li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
         .alert.alert-success= flash.notice

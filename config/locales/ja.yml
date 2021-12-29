@@ -10,6 +10,7 @@ ja:
     models:
       user: ユーザー
       unit: ユニット
+      session: セッション
     attributes:
       user:
         name: 名前
@@ -25,6 +26,9 @@ ja:
         belongs: 所属
         birthday: 結成年月日
         image: 画像
+      session:
+        email: メールアドレス
+        password: パスワード
   date:
     abbr_day_names:
     - 日
