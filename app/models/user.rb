@@ -5,5 +5,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :role, presence: true, inclusion: { in: %w(芸人 スタッフ) }
 
-  has_and_belongs_to_many :units
+  has_many :participations, class_name: "Relationship", foreign_key: "participation_id"
+  has_many :belongs_unit, through: :participations, source: :solicitations
+  
+
 end

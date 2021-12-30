@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_120123) do
+ActiveRecord::Schema.define(version: 2021_12_29_105322) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,15 +40,23 @@ ActiveRecord::Schema.define(version: 2021_12_26_120123) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "solicitation_id"
+    t.integer "participation_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["participation_id"], name: "index_relationships_on_participation_id"
+    t.index ["solicitation_id", "participation_id"], name: "index_relationships_on_solicitation_id_and_participation_id", unique: true
+    t.index ["solicitation_id"], name: "index_relationships_on_solicitation_id"
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "name", null: false
     t.string "kana", null: false
     t.date "birthday", null: false
     t.string "belongs", null: false
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_units_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,13 +69,9 @@ ActiveRecord::Schema.define(version: 2021_12_26_120123) do
     t.text "profile"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "unit_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["unit_id"], name: "index_users_on_unit_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "units", "users"
-  add_foreign_key "users", "units"
 end

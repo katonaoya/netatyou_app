@@ -6,5 +6,12 @@ class Unit < ApplicationRecord
   validates :birthday, presence: true
   validates :belongs, presence: true
 
-  has_and_belongs_to_many :users
+  has_many :solicitations, class_name: "Relationship", foreign_key: "solicitation_id"
+  has_many :member, through: :solicitations, source: :participations
+
+  # ユニットに加入する
+  def join_unit(user)
+    member << user
+  end
+
 end

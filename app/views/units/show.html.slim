@@ -15,7 +15,7 @@ br
 br
 'メンバー
 br
-= User.find(@unit.user_id).name
+= @unit.member
 
 - if @unit.user_id == current_user.id
   = link_to '編集', edit_unit_path, class: 'btn btn-primary'
