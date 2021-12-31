@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include UnitUser
   has_secure_password
 
   validates :name, presence: true
@@ -6,7 +7,5 @@ class User < ApplicationRecord
   validates :role, presence: true, inclusion: { in: %w(芸人 スタッフ) }
 
   has_many :participations, class_name: "Relationship", foreign_key: "participation_id"
-  has_many :belongs_unit, through: :participations, source: :solicitations
-  
 
 end

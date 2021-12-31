@@ -11,12 +11,13 @@ User.create!(
   email:      "matumoto@mail.com",
   password:   "1",
   role:       "芸人",
-  birthday:   1/1/1
+  birthday:   "1-1-1"
   )
 
-Unit.create!(
-  name:     "ダウンタウン",
-  kana:     "ダウンタウン",
-  belongs:  "よしもとクリエイティブ・エージェンシー",
-  birthday: 1/1/1
+User.create!(
+  name:       "浜田雅功",
+  email:      "hamada@mail.com",
+  password:   "1",
+  role:       "芸人",
+  birthday:   "1-1-1"
   )

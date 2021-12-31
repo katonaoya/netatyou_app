@@ -1,0 +1,5 @@
+h1 ユーザー一覧
+
+- @users.each do |user|
+  = link_to user.name, user_path(user.id), class: 'nav-link'
+  br

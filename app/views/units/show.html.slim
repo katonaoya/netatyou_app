@@ -13,9 +13,6 @@ br
 = "#{Unit.human_attribute_name(:belongs)}:　#{@unit.belongs}"
 br
 br
-'メンバー
-br
-= @unit.member
 
-- if @unit.user_id == current_user.id
+- if @unit.solicitations.map(&:participation_id).include?(current_user.id)
   = link_to '編集', edit_unit_path, class: 'btn btn-primary'

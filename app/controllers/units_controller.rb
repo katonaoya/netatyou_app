@@ -6,8 +6,8 @@ class UnitsController < ApplicationController
   def create
     @unit = Unit.new(unit_params)
     if @unit.save
-      @unit.join_unit(current_user)
-      redirect_to unit_path(@unit), notice: "#{@unit.name}が登録されました。"
+      Relationship.create(solicitation_id: @unit.id, participation_id: current_user.id)
+      redirect_to user_path(current_user.id), notice: "#{@unit.name}が登録されました。"
     else
       render :new
     end
@@ -37,7 +37,7 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :kana, :belongs, :birthday, :image])
+    params.require(:unit).permit(:name, :kana, :belongs, :birthday, :image)
   end
 
 end

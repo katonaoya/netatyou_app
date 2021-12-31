@@ -1,4 +1,5 @@
 class Unit < ApplicationRecord
+  include UnitUser
   has_one_attached :image
 
   validates :name, presence: true
@@ -7,11 +8,7 @@ class Unit < ApplicationRecord
   validates :belongs, presence: true
 
   has_many :solicitations, class_name: "Relationship", foreign_key: "solicitation_id"
-  has_many :member, through: :solicitations, source: :participations
 
-  # ユニットに加入する
-  def join_unit(user)
-    member << user
-  end
-
+  has_many :cola, through: :solicitations, source: :participation_id
+ 
 end
