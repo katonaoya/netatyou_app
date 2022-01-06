@@ -1,0 +1,8 @@
+h1 メンバー追加
+
+- @users.each do |user|
+  = form_with model: [@unit, @relationship], url: relationships_path, local: true do |f|
+    = user.name
+    = f.hidden_field :solicitation_id, value: @unit.id
+    = f.hidden_field :participation_id, value: user.id
+    = f.submit '選択する', class: 'btn btn-primary'

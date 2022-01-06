@@ -1,0 +1,18 @@
+h1 ネタ編集
+
+= form_with model: [@unit, @neta], url: neta_path, local: true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form_control'
+  .form-group.dialogue
+    = f.label :dialogue
+    = f.text_area :dialogue, class: 'form_control', cols: 70, rows: 100
+  .neta_time
+    .form-group
+      = f.label :minute
+      = f.text_field :minute, class: 'form_control'
+    .form-group
+      = f.label :second
+      = f.text_field :second, class: 'form_control'
+  = f.hidden_field :unit_id, value: @unit.id
+  = f.submit nil, class: 'btn btn-primary'

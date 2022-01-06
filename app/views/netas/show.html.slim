@@ -1,0 +1,14 @@
+h1= @neta.title
+
+h3= Unit.find(@neta.unit_id).name
+
+= simple_format(h(@neta.dialogue), {}, sanitize: false, wrapper_tag: "div")
+be
+= Neta.human_attribute_name(:item)
+br
+= @neta.item
+br
+p 時間
+= "#{@neta.minute}:#{@neta.second}"
+br
+= link_to '編集', edit_neta_path, class: 'btn btn-primary'

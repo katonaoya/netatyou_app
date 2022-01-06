@@ -13,6 +13,21 @@ br
 = "#{Unit.human_attribute_name(:belongs)}:　#{@unit.belongs}"
 br
 br
+p メンバー
+- User.member(@unit.id).each do |user|
+  = link_to user.name, user_path(user)
+  br
 
-- if @unit.solicitations.map(&:participation_id).include?(current_user.id)
+br
+
+- if current_unit
   = link_to '編集', edit_unit_path, class: 'btn btn-primary'
+  = link_to 'ネタ作成', new_neta_path(@unit), class: 'btn btn-primary'
+  = link_to 'メンバー追加', new_relationship_path, class: 'btn btn-primary'
+br
+br
+br
+h2 ネタ
+- @unit.netas.each do |neta|
+  = link_to neta.title, neta_path(neta)
+  br

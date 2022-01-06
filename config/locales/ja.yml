@@ -29,6 +29,12 @@ ja:
       session:
         email: メールアドレス
         password: パスワード
+      neta:
+        title: タイトル
+        dialogue: 内容
+        item: 道具
+        minute: 分
+        second: 秒
   date:
     abbr_day_names:
     - 日

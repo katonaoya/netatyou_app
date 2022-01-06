@@ -10,5 +10,10 @@ br
 br
 = @user.profile
 br
+p 所属ユニット
+- current_unit.each do |unit|
+  = link_to unit.name, unit_path(unit)
+  br
+br
 - if current_user.id == @user.id
   = link_to '編集', edit_user_path, class: 'btn btn-primary'
