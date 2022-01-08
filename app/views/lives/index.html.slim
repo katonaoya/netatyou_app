@@ -1,0 +1,9 @@
+h1 ライブ関連一覧
+ul.navbar-nav.ml-auto
+  li.nav-item= link_to 'new', new_live_path, class: 'nav-link'
+  li.nav-item= link_to 'edit', edit_live_path(1), class: 'nav-link'
+  li.nav-item= link_to 'show(1)', live_path(1), class: 'nav-link'
+  
+h2 ライブ名
+- @lives.each do |live|
+  = link_to live.title, live_path(live)

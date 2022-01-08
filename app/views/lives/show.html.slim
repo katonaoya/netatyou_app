@@ -1,0 +1,9 @@
+h1= @live.title
+
+= "#{Live.human_attribute_name(:theater)}:　#{@live.theater}"
+br
+= "#{Live.human_attribute_name(:date)}:　#{@live.date}"
+br
+= "#{Live.human_attribute_name(:item)}:　#{@live.item}"
+br
+= "主催者:　#{User.find(@live.user_id).name}"

@@ -1,0 +1,23 @@
+- if live.errors.present?
+  ul#error_explanation
+    - live.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: live, local: true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form_control'
+  .form-group
+    = f.label :theater
+    = f.text_field :theater, class: 'form_control'
+  .form-group
+    = f.label :date
+    = f.date_field :date, class: 'form_control'
+  .form-group
+    = f.label :item
+    = f.text_field :item, class: 'form_control'
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form_control'
+  = f.hidden_field :user_id, value: current_user.id
+  = f.submit nil, class: 'btn btn-primary'

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :role, presence: true, inclusion: { in: %w(芸人 スタッフ) }
 
   has_many :participations, class_name: "Relationship", foreign_key: "participation_id"
+  has_many :lives
 
   scope :member, ->(id) { find(Relationship.where(solicitation_id: id).map(&:participation_id)) }
     
