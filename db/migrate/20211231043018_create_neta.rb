@@ -6,7 +6,7 @@ class CreateNeta < ActiveRecord::Migration[6.1]
       t.string :item
       t.integer :minute
       t.integer :second
-      t.string :unit_id, forign_key: true
+      t.integer :unit_id, forign_key: true
 
       t.timestamps
     end

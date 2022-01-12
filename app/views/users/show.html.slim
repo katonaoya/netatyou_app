@@ -11,7 +11,7 @@ br
 = @user.profile
 br
 p 所属ユニット
-- current_unit.each do |unit|
+- Unit.find(current_unit).each do |unit|
   = link_to unit.name, unit_path(unit)
   br
 br

@@ -5,7 +5,7 @@ class CreateLives < ActiveRecord::Migration[6.1]
       t.string :theater
       t.date :date
       t.string :item
-      t.string :user_id, forign_key: true
+      t.integer :user_id, forign_key: true
 
       t.timestamps
     end

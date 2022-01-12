@@ -20,14 +20,41 @@ p メンバー
 
 br
 
-- if current_unit
+- if current_unit.include?(@unit.id)
   = link_to '編集', edit_unit_path, class: 'btn btn-primary'
   = link_to 'ネタ作成', new_neta_path(@unit), class: 'btn btn-primary'
   = link_to 'メンバー追加', new_relationship_path, class: 'btn btn-primary'
 br
 br
 br
+
 h2 ネタ
-- @unit.netas.each do |neta|
-  = link_to neta.title, neta_path(neta)
-  br
+table.table.table-hover
+  tbody
+    tr
+      th タイトル
+      th 小道具
+      th 時間
+  tbody
+    - @unit.netas.each do |neta|
+      tr
+        td= link_to neta.title, neta_path(neta)
+        td= neta.item
+        td= "#{neta.minute}:#{neta.second}"
+
+h2 出演ライブ
+table.table.table-hover
+  tbody
+    tr
+      th ライブタイトル
+      th 日時
+      th ネタ
+      th
+  tbody
+    tr
+      - Live.appearance(@unit).each do |live|
+        td= link_to live.title, live_path(live)
+        td= live.date
+        td= Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
+        - if current_unit.include?(@unit.id)
+          td= link_to 'ネタの変更', neta_change_unit_path(@unit.id, live_id:live.id), class: 'btn btn-primary chage-neta'

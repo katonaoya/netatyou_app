@@ -34,10 +34,25 @@ class NetasController < ApplicationController
     end
   end
 
+  def change
+    @netas = Neta.where(unit_id: params[:id])
+    @live = Live.find(params[:live_id])
+  end
+
+  def choice
+    comedian = Comedian.find_by(live_id: change_params[:live_id], unit_id: params[:id])
+    comedian.update(neta_id: change_params[:neta_id])
+    redirect_to unit_path(params[:id])
+  end
+
   private
 
   def neta_params
     params.require(:neta).permit(:title, :dialogue, :item, :minute, :second, :unit_id)
+  end
+
+  def change_params
+    params.permit(:live_id, :neta_id)
   end
 
 end

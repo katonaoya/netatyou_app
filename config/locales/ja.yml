@@ -42,6 +42,8 @@ ja:
         date: 開催日
         item: 劇場の道具
         image: ポスター
+      comedian:
+        turn: 出順
   date:
     abbr_day_names:
     - 日

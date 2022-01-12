@@ -1,0 +1,9 @@
+h1 こんにちは
+
+= form_with url: koban_live_path, method: :patch do |f|
+  - @comedians.each do |unit|
+    = Unit.find(unit.unit_id).name
+    = f.fields_for "comedians[]", unit do |af|
+      = af.text_field :turn
+    br
+  = submit_tag '更新する', class: 'btn btn-primary'

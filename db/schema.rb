@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_062028) do
+ActiveRecord::Schema.define(version: 2022_01_08_033925) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,12 +40,27 @@ ActiveRecord::Schema.define(version: 2022_01_06_062028) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comedians", force: :cascade do |t|
+    t.integer "live_id", null: false
+    t.integer "unit_id", null: false
+    t.integer "neta_id"
+    t.integer "turn"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["live_id", "neta_id"], name: "index_comedians_on_live_id_and_neta_id"
+    t.index ["live_id", "unit_id"], name: "index_comedians_on_live_id_and_unit_id"
+    t.index ["live_id"], name: "index_comedians_on_live_id"
+    t.index ["neta_id"], name: "index_comedians_on_neta_id"
+    t.index ["unit_id", "neta_id"], name: "index_comedians_on_unit_id_and_neta_id"
+    t.index ["unit_id"], name: "index_comedians_on_unit_id"
+  end
+
   create_table "lives", force: :cascade do |t|
     t.string "title", null: false
     t.string "theater"
     t.date "date"
     t.string "item"
-    t.string "user_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -56,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_062028) do
     t.string "item"
     t.integer "minute"
     t.integer "second"
-    t.string "unit_id"
+    t.integer "unit_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

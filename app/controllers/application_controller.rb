@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_unit
-    current_unit = Relationship.where(participation_id: current_user)&.ids
-    @current_unit ||= current_unit ? Unit.find(current_unit) : nil
+    @current_unit ||= User.find(current_user.id).participations.map(&:solicitation_id)
   end
 
   def login_required

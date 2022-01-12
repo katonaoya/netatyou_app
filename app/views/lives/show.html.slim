@@ -7,3 +7,17 @@ br
 = "#{Live.human_attribute_name(:item)}:　#{@live.item}"
 br
 = "主催者:　#{User.find(@live.user_id).name}"
+
+br
+br
+br
+= link_to '出演者を選択する', new_comedian_path
+h3 出演者
+- @units&.each do |unit|
+  = "#{@comedians.find_by(unit_id: unit.id).turn}:#{unit.name}"
+  br
+  = "タイトル:#{Neta.performance(unit)}"
+  br
+
+= link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
+
