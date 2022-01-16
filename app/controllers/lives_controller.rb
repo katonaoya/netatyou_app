@@ -32,14 +32,14 @@ class LivesController < ApplicationController
 
   def show
     @live = Live.find(params[:id])
-    if Live.find(params[:id]).comedians
-      @units = Live.line_up(@live.id)
-      @comedians = Live.find(params[:id]).comedians
-    end
+    @units = Live.line_up(@live.id)
+    @comedians = Live.find(params[:id]).comedians
+    @staffs = Live.find(params[:id]).staffs
   end
 
   def koban
     @performer_units = Unit.performer(params[:id])
+    @comedians = Live.find(params[:id]).comedians
   end
 
   def koban_update

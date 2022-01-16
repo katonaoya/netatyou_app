@@ -9,20 +9,21 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to:'sessions#destroy'
   
-
   resources :users
   
   resources :lives, shallow: true do
     member do
       get '/koban', to: 'lives#koban'
       patch '/koban', to: 'lives#koban_update'
-      resources :comedians
+      resources :comedians, only: [:new, :create, :edit, :update]
+      resources :staffs, only: [:new, :create, :edit, :update]
     end
   end
 
   resources :units, shallow: true do
     member do
-      resources :netas, :relationships
+      resources :relationships, only: [:new, :create]
+      resources :netas, except: [:index]
       get '/neta_change', to: 'netas#change'
       post '/neta_change', to: 'netas#choice'
     end

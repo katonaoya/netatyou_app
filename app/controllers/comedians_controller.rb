@@ -1,10 +1,13 @@
 class ComediansController < ApplicationController
-  def index
-  end
 
   def new
     @comedian = Comedian.new
     @units = Unit.all
+    if Comedian.find_by(live_id: params[:id])
+      @turn = Comedian.where(live_id: params[:id]).map(&:turn).max+1
+    else
+      @turn = 1
+    end
   end
 
   def create
@@ -16,9 +19,6 @@ class ComediansController < ApplicationController
       # render :new
       raise SyntaxError
     end
-  end
-
-  def show
   end
 
   def edit

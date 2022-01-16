@@ -6,5 +6,5 @@ h1 出演者を選択する
     = f.hidden_field :live_id, value: params[:id]
     = f.hidden_field :unit_id, value: unit.id
     = f.hidden_field :neta_id, value: Neta.find_by(unit_id: unit.id).id
-    = f.hidden_field :turn,    value: Comedian.where(live_id: params[:id]).map(&:turn).max+1
+    = f.hidden_field :turn,    value: @turn
     = f.submit '選択する', class: 'btn btn-primary'

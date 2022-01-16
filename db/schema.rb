@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_033925) do
+ActiveRecord::Schema.define(version: 2022_01_12_085806) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,17 @@ ActiveRecord::Schema.define(version: 2022_01_08_033925) do
     t.index ["participation_id"], name: "index_relationships_on_participation_id"
     t.index ["solicitation_id", "participation_id"], name: "index_relationships_on_solicitation_id_and_participation_id", unique: true
     t.index ["solicitation_id"], name: "index_relationships_on_solicitation_id"
+  end
+
+  create_table "staffs", force: :cascade do |t|
+    t.string "position"
+    t.integer "user_id", null: false
+    t.integer "live_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["live_id", "user_id"], name: "index_staffs_on_live_id_and_user_id"
+    t.index ["live_id"], name: "index_staffs_on_live_id"
+    t.index ["user_id"], name: "index_staffs_on_user_id"
   end
 
   create_table "units", force: :cascade do |t|

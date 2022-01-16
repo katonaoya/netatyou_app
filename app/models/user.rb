@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  include UnitUser
   has_secure_password
 
   validates :name, presence: true
@@ -8,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :participations, class_name: "Relationship", foreign_key: "participation_id"
   has_many :lives
+  has_many :staffs
 
   scope :member, ->(id) { find(Relationship.where(solicitation_id: id).map(&:participation_id)) }
     

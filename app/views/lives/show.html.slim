@@ -12,6 +12,8 @@ br
 br
 br
 = link_to '出演者を選択する', new_comedian_path
+br
+= link_to 'スタッフを選択する', new_staff_path
 h3 出演者
 - @units&.each do |unit|
   = "#{@comedians.find_by(unit_id: unit.id).turn}:#{unit.name}"
@@ -21,3 +23,9 @@ h3 出演者
 
 = link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
 
+h3 スタッフ一覧
+- @staffs.each do |staff|
+  = "#{User.find(staff.user_id).name}:#{staff.position}"
+  br
+
+= link_to 'スタッフの仕事を変更する', edit_staff_path(@live), class: 'btn btn-primary'
