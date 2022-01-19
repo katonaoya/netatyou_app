@@ -16,6 +16,7 @@
 }
 
 .unit_image{
+  position: relative;
   width: 400px;
   height: 400px;
   margin: 0px;
@@ -24,6 +25,13 @@
   border:1px solid;
   margin-right: 5px;
   margin-bottom: 5px;
+  image{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 400px;
+    height: 400px;
+  }
 }
 
 .unit_profile{
