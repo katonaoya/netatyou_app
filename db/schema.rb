@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_085806) do
     t.string "belongs", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["kana"], name: "index_units_on_kana"
   end
 
   create_table "users", force: :cascade do |t|

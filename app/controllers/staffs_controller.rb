@@ -27,6 +27,11 @@ class StaffsController < ApplicationController
     redirect_to live_path(params[:id]), notice: "情報が更新されました。"
   end
 
+  def destroy
+    @staff = Staff.find(params[:id])
+    @staff.destroy
+    redirect_to live_path(params[:live_id])
+  end
   private
 
   def staff_params

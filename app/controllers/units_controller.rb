@@ -19,6 +19,7 @@ class UnitsController < ApplicationController
 
   def update
     @unit = Unit.find(params[:id])
+    @unit.image.attach(params[:unit][:image])
     if @unit.update(unit_params)
       redirect_to unit_path(@unit), notice: "#{@unit.name}が登録されました。"
     else

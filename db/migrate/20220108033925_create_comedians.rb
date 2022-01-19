@@ -3,7 +3,7 @@ class CreateComedians < ActiveRecord::Migration[6.1]
     create_table :comedians do |t|
       t.integer :live_id, forign_key: true, null: false
       t.integer :unit_id, forign_key: true, null: false
-      t.integer :neta_id, forign_key: true
+      t.integer :neta_id
       t.integer :turn
 
       t.timestamps

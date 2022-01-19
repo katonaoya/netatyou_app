@@ -1,0 +1,23 @@
+.staff-edit{
+  display: flex;
+}
+
+.staff-name{
+  padding: 5px 25px;
+  margin-right: 5px;
+}
+
+.staff-edit-btn{
+  padding: 10px 20px;
+  margin: 30px 50px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.staff-choice{
+  th{
+    padding: 10px;
+  }
+}

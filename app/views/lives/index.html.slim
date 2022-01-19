@@ -1,13 +1,13 @@
-h1 ライブ関連一覧
-ul.navbar-nav.ml-auto
-  li.nav-item= link_to 'ライブを主催する', new_live_path, class: 'btn btn-primary'
-
-br
-h3 ライブ名
-table.table.table-hover
+table.table.table-hover.live_table
   tbody.thead-default
     tr
       th ライブ名
+      th 劇場
+      th 開催日
     - @lives.each do |live|
       tr
         td= link_to live.title, live_path(live)
+        td= live.theater
+        td= live.date
+
+= link_to 'ライブを主催する', new_live_path, class: 'btn-primary live-syusai-btn'

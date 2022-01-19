@@ -2,6 +2,52 @@
   margin-left: 3em;
 }
 
+.unit_name{
+  text-align: center;
+}
 .chage-neta{
   margin-left: 1em;
+  margin-top: auto;
+  margin-bottom: auto;
 }
+
+.unit_date{
+  display: flex;
+}
+
+.unit_image{
+  width: 400px;
+  height: 400px;
+  margin: 0px;
+  text-align: center;
+  padding: 180px 0;
+  border:1px solid;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.unit_profile{
+  margin-top: 40px;
+}
+
+.unit_member{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.unit_btn a{
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.unit-live{
+  margin-top: 5em;
+}
+
+.unit-delete{
+  margin-top: 30px;
+  .member-name{
+    margin: 30px;
+  }
+}
+
