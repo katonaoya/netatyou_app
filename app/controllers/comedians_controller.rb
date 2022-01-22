@@ -2,7 +2,7 @@ class ComediansController < ApplicationController
 
   def new
     @comedian = Comedian.new
-    @units = Unit.all
+    @units = Unit.where.not(id: Live.line_up(params[:id]).map(&:id))
     if Comedian.find_by(live_id: params[:id])
       @turn = Comedian.where(live_id: params[:id]).map(&:turn).max+1
     else
@@ -15,9 +15,15 @@ class ComediansController < ApplicationController
     if @comedian.save
       redirect_to live_path(params[:id])
     else
-      # @units = Unit.all
-      # render :new
-      raise SyntaxError
+      raise
+      @comedian = Comedian.new
+      @units = Unit.all
+      if Comedian.find_by(live_id: params[:id])
+        @turn = Comedian.where(live_id: params[:id]).map(&:turn).max+1
+      else
+        @turn = 1
+      end
+      render :new
     end
   end
 
@@ -33,6 +39,12 @@ class ComediansController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @comedian = Comedian.find(params[:id])
+    @comedian.destroy
+    redirect_to live_path(params[:live_id])
   end
 
   private

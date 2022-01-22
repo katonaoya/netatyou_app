@@ -1,19 +1,22 @@
-h1 = @user.name
+h1.user-name = "#{@user.name}のプロフィール"
 
-= "#{User.human_attribute_name(:birthday)}:　#{@user.birthday}"
-br
-br
-= "#{User.human_attribute_name(:skill)}:　#{@user.skill}"
-br
-br
-= User.human_attribute_name(:profile)
-br
-= @user.profile
-br
-p 所属ユニット
-- Unit.find(current_unit).each do |unit|
-  = link_to unit.name, unit_path(unit)
-  br
-br
+table.profile-table
+  tr
+    th= User.human_attribute_name(:birthday)
+    td= @user.birthday
+  tr
+    th= User.human_attribute_name(:skill)
+    td= @user.skill
+  tr
+    th= User.human_attribute_name(:profile)
+    td= @user.profile
+
+.belongs-unit
+  h2 所属ユニット
+  ul
+    - Unit.belongs_unit(@user).each do |unit|
+      li= link_to unit.name, unit_path(unit)
+
+
 - if current_user.id == @user.id
-  = link_to '編集', edit_user_path, class: 'btn btn-primary'
+  = link_to '編集', edit_user_path, class: 'edit-btn btn-primary'

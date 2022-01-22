@@ -15,14 +15,14 @@ Rails.application.routes.draw do
     member do
       get '/koban', to: 'lives#koban'
       patch '/koban', to: 'lives#koban_update'
-      resources :comedians, only: [:new, :create, :edit, :update]
-      resources :staffs, only: [:new, :create, :edit, :update]
+      resources :comedians, only: [:new, :create, :edit, :update, :destroy]
+      resources :staffs, only: [:new, :create, :edit, :update, :destroy]
     end
   end
 
   resources :units, shallow: true do
     member do
-      resources :relationships, only: [:new, :create]
+      resources :relationships, only: [:new, :create, :destroy]
       resources :netas, except: [:index]
       get '/neta_change', to: 'netas#change'
       post '/neta_change', to: 'netas#choice'

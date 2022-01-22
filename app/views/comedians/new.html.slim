@@ -2,9 +2,10 @@ h1 出演者を選択する
 
 - @units.each do |unit|
   = form_with model: [@live, @comedian], url: comedians_path, local: true do |f|
-    = unit.name
-    = f.hidden_field :live_id, value: params[:id]
-    = f.hidden_field :unit_id, value: unit.id
-    = f.hidden_field :neta_id, value: Neta.find_by(unit_id: unit.id).id
-    = f.hidden_field :turn,    value: @turn
-    = f.submit '選択する', class: 'btn btn-primary'
+      = unit.name
+      = f.hidden_field :live_id, value: params[:id]
+      = f.hidden_field :unit_id, value: unit.id
+      - if Neta.find_by(unit_id: unit.id)
+        = f.hidden_field :neta_id, value: Neta.find_by(unit_id: unit.id).id
+      = f.hidden_field :turn,    value: @turn
+      = f.submit '選択する', class: 'btn btn-primary'

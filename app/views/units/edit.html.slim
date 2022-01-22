@@ -1,3 +1,12 @@
 h1 ユニット編集
 
 = render partial: 'form', locals: { unit: @unit }
+
+table.unit-delete
+  tr
+    th.member-name メンバー
+    th
+  - User.member(@unit.id).each do |user|
+    tr
+      td.member-name= user.name
+      td= link_to 'メンバーから削除する', relationship_path(user, unit_id: @unit.id), method: :delete, class: 'btn btn-primary'

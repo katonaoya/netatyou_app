@@ -16,6 +16,12 @@ class RelationshipsController < ApplicationController
 
   end
 
+  def destroy
+    @relationship = Relationship.find_by(solicitation_id: params[:unit_id], participation_id: params[:id])
+    @relationship.destroy
+    redirect_to unit_path(params[:unit_id]), notice: "#{User.find(params[:id]).name}をメンバーから外しました。"
+  end
+
   private
 
   def relationship_params

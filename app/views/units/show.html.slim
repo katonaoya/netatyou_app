@@ -1,29 +1,29 @@
-h1 = @unit.name
+h1.unit_name = @unit.name
 
-= Unit.human_attribute_name(:image)
-br
-= @unit.image.attached? ? image_tag(@unit.image) : "画像が設定されていません"
-br
-= "#{Unit.human_attribute_name(:kana)}:　#{@unit.kana}"
-br
-br
-= "#{Unit.human_attribute_name(:birthday)}:　#{@unit.birthday}"
-br
-br
-= "#{Unit.human_attribute_name(:belongs)}:　#{@unit.belongs}"
-br
-br
-p メンバー
-- User.member(@unit.id).each do |user|
-  = link_to user.name, user_path(user)
-  br
+section.unit_date
+  .unit_image
+    = @unit.image.attached? ? image_tag(@unit.image) : "画像が設定されていません"
 
-br
-
-- if current_unit.include?(@unit.id)
-  = link_to '編集', edit_unit_path, class: 'btn btn-primary'
-  = link_to 'ネタ作成', new_neta_path(@unit), class: 'btn btn-primary'
-  = link_to 'メンバー追加', new_relationship_path, class: 'btn btn-primary'
+  .unit_profile
+    = "#{Unit.human_attribute_name(:kana)}:　#{@unit.kana}"
+    br
+    br
+    = "#{Unit.human_attribute_name(:birthday)}:　#{@unit.birthday}"
+    br
+    br
+    = "#{Unit.human_attribute_name(:belongs)}:　#{@unit.belongs}"
+    br
+    br
+    .unit_member
+      p メンバー
+      - User.member(@unit.id).each do |user|
+        = link_to user.name, user_path(user)
+        br
+    .unit_btn
+      - if current_unit.include?(@unit.id)
+        = link_to '編集', edit_unit_path, class: 'btn btn-primary'
+        = link_to 'ネタ作成', new_neta_path(@unit), class: 'btn btn-primary'
+        = link_to 'メンバー追加', new_relationship_path, class: 'btn btn-primary'
 br
 br
 br
@@ -42,19 +42,20 @@ table.table.table-hover
         td= neta.item
         td= "#{neta.minute}:#{neta.second}"
 
-h2 出演ライブ
-table.table.table-hover
-  tbody
-    tr
-      th ライブタイトル
-      th 日時
-      th ネタ
-      th
-  tbody
-    tr
+.unit-live
+  h2 出演ライブ
+  table.table.table-hover
+    tbody
+      tr
+        th ライブタイトル
+        th 日時
+        th ネタ
+        th
+    tbody
       - Live.appearance(@unit).each do |live|
-        td= link_to live.title, live_path(live)
-        td= live.date
-        td= Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
-        - if current_unit.include?(@unit.id)
-          td= link_to 'ネタの変更', neta_change_unit_path(@unit.id, live_id:live.id), class: 'btn btn-primary chage-neta'
+        tr
+          td= link_to live.title, live_path(live)
+          td= live.date
+          td= Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
+          - if current_unit.include?(@unit.id)
+            td= link_to 'ネタの変更', neta_change_unit_path(@unit.id, live_id:live.id), class: 'btn btn-primary chage-neta'

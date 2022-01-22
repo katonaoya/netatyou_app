@@ -1,14 +1,16 @@
-h1= @neta.title
+h1= Unit.find(@neta.unit_id).name
 
-h3= Unit.find(@neta.unit_id).name
+h3= "タイトル:#{@neta.title}"
 
-= simple_format(h(@neta.dialogue), {}, sanitize: false, wrapper_tag: "div")
-be
-= Neta.human_attribute_name(:item)
+.neta-body
+  h3 セリフ
+  = simple_format(h(@neta.dialogue), {}, sanitize: false, wrapper_tag: "div class=serihu")
+
+h3= Neta.human_attribute_name(:item)
 br
 = @neta.item
 br
-p 時間
+h3 時間
 = "#{@neta.minute}:#{@neta.second}"
 br
-= link_to '編集', edit_neta_path, class: 'btn btn-primary'
+= link_to '編集', edit_neta_path, class: 'neta-edit btn-primary'

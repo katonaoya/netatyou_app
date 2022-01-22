@@ -2,7 +2,9 @@ h1 スタッフ管理
 
 - @users.each do |user|
   = form_with model: [@live, @staff], url: staffs_path, local: true do |f|
-    = user.name
-    = f.hidden_field :live_id, value: @live.id
-    = f.hidden_field :user_id, value: user.id
-    = f.submit '選択する', class: 'btn btn-primary'
+    .staff-edit
+      .staff-name
+        = user.name
+      = f.hidden_field :live_id, value: @live.id
+      = f.hidden_field :user_id, value: user.id
+      = f.submit '選択する', class: 'btn btn-primary'
