@@ -1,0 +1,123 @@
+.live_table{
+  margin-top: 5em;
+}
+
+.live-syusai-btn{
+  font-size: 25px;
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 2em;
+  padding-left: 2em;
+  border-radius: 4px;
+}
+
+.live-profile{
+  margin-bottom: 3em;
+  h1{
+    margin-left: 150px;
+    margin-bottom: 50px;
+  }
+  td{
+  padding-left: 2em;
+  }
+  tr{
+    height: 30px;
+  }
+}
+
+.syutuen-btn a{
+  margin: 5px;
+}
+
+.syutuen{
+  margin-bottom: 50px;
+  h2{
+    margin-left: 200px;
+    margin-bottom: 15px;
+  }
+  .dezyun{
+    padding: 5px;
+    text-align: center;
+  }
+  .conbimei{
+    padding: 5px 50px;
+    text-align: center;
+  }
+  .neta-name{
+    padding: 5px 100px;
+    text-align: center;
+  }
+  th, td{
+    border: 1px solid;
+  }
+}
+
+.staff-itiran{
+  margin-bottom: 40px;
+  margin-left: 50px;
+  h2{
+    margin-left: 120px;
+    margin-bottom: 15px; 
+  }
+  .staff-user{
+    padding: 10px;
+    text-align: center;
+  }
+  .staff-position{
+    padding: 10px 150px;
+    text-align: center;
+  }
+  th, td{
+    border: 1px solid;
+  }
+}
+
+.koban{
+  display: flex;
+}
+
+.unit-name{
+  border: 1px solid;
+  padding: 10px 15px;
+}
+
+.unit-turn{
+  height: 42px;
+  width: 3em;
+}
+
+.live-change{
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+}
+
+.staff-change{
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+}
+
+.live-title{
+  margin-left: 2em;
+}
+
+.live-theater{
+  margin-left: 4em;
+}
+
+.live-date{
+  margin-left: 3em;
+}
+
+.live-item{
+  margin-left: 1em;
+}
+
