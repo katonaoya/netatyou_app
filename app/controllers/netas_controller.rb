@@ -1,4 +1,7 @@
 class NetasController < ApplicationController
+  before_action :geinin_required
+  before_action
+
   def new
     @neta = Neta.new
     @unit = Unit.find(params[:id])
@@ -15,6 +18,11 @@ class NetasController < ApplicationController
 
   def show
     @neta = Neta.find(params[:id])
+    if current_units_neta?
+      @neta
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def index
@@ -22,7 +30,11 @@ class NetasController < ApplicationController
 
   def edit
     @neta = Neta.find(params[:id])
-    @unit = Unit.find(params[:id])
+    if current_units_neta?
+      @unit = Unit.find(params[:id])
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
@@ -46,6 +58,10 @@ class NetasController < ApplicationController
   end
 
   private
+
+  def current_units_neta?
+    current_user == Unit.find(neta.unit_id).solicitations.map(&:participation)
+  end
 
   def neta_params
     params.require(:neta).permit(:title, :dialogue, :item, :minute, :second, :unit_id)

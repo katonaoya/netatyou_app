@@ -12,17 +12,18 @@ class ComediansController < ApplicationController
 
   def create
     @comedian = Comedian.new(comedian_params)
+
     if @comedian.save
       redirect_to live_path(params[:id])
     else
-      raise
-      @comedian = Comedian.new
-      @units = Unit.all
       if Comedian.find_by(live_id: params[:id])
         @turn = Comedian.where(live_id: params[:id]).map(&:turn).max+1
       else
         @turn = 1
       end
+      raise
+      @comedian = Comedian.new
+      @units = Unit.all
       render :new
     end
   end

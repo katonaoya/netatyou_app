@@ -1,0 +1,6 @@
+h1 ネタ帳サービスのメールアドレス認証
+
+p= "ようこそ！#{@user.name}さん！"
+p ネタ帳サービスを利用するには、以下のURLをクリックして、メールアドレスを認証してください。
+
+= edit_account_activation_url(@user.activation_token, email: @user.email)

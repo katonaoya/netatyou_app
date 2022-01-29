@@ -11,7 +11,9 @@ User.create!(
   email:      "matumoto@mail.com",
   password:   "1",
   role:       "芸人",
-  birthday:   "1-1-1"
+  birthday:   "1-1-1",
+  activated: true,
+  activated_at: Time.zone.now
   )
 
 User.create!(
@@ -19,7 +21,9 @@ User.create!(
   email:      "hamada@mail.com",
   password:   "1",
   role:       "芸人",
-  birthday:   "1-1-1"
+  birthday:   "1-1-1",
+  activated: true,
+  activated_at: Time.zone.now
   )
 
 User.create!(
@@ -27,7 +31,9 @@ User.create!(
   email:      "kunisaki@mail.com",
   password:   "1",
   role:       "芸人",
-  birthday:   "1-1-1"
+  birthday:   "1-1-1",
+  activated: true,
+  activated_at: Time.zone.now
   )
 
 User.create!(
@@ -35,7 +41,9 @@ User.create!(
   email:      "kawakita@mail.com",
   password:   "1",
   role:       "芸人",
-  birthday:   "1-1-1"
+  birthday:   "1-1-1",
+  activated: true,
+  activated_at: Time.zone.now
   )
 
 Unit.create!(

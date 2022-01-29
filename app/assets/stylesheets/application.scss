@@ -9,14 +9,9 @@
 .app-title{
   background-color: #00ff7f;
   height: 80px;
-  .nav-item{
-    margin-left: 2em;
-    list-style-type: none;
-    float: left;
-    margin-top: 25px;
-    a{
-      font-size: 20px;
-    }
+  font-family: "メイリオ";
+  a{
+    color: white;
   }
 }
 
@@ -28,16 +23,25 @@
 .navbar-nav{
   margin: 0px;
 }
-.navbar li{
+
+.navbar li:not(.main_unit_nav){
   padding: 28px 5px;
   margin-right: 1em;
   list-style-type: none;
   float: left;
-  // margin-top: 20px;
   font-size: 16px;
   background-color:#06b45da2;
 }
 
+.main_unit_nav{
+  padding: 16.5px 5px;
+  margin-right: 1em;
+  list-style-type: none;
+  float: left;
+  font-size: 16px;
+  background-color:#06b45da2;
+  text-align: center;
+}
 
 a:hover{
   text-decoration: none;
@@ -45,4 +49,16 @@ a:hover{
 
 .container{
   width: 700px;
+}
+
+footer{
+  background-color: #00ff7f;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  p{
+    text-align: center;
+    margin-top: 40px;
+  }
 }

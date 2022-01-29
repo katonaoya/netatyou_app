@@ -1,3 +1,27 @@
 h1 プロフィール編集
 
-= render partial: 'form', locals: { user: @user }
+- if @user.errors.present?
+  ul#error_explanation
+    - @user.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: @user, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form_control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: 'form_control'
+  .form-group
+    = f.label :skill
+    = f.text_field :skill, class: 'form_control'
+  .form-group.main_unit
+    p メインユニット
+    - @user.participations.map(&:solicitation).each do |unit|
+      = f.radio_button :main_unit_id, unit.id, class: 'form_control'
+      = f.label :main_unit_id, unit.name
+      br
+  .form-group.profile
+    = f.label :profile
+    = f.text_area :profile, class: 'form_control', cols: 55, rows: 10
+  = f.submit 'プロフィールを更新する', class: 'btn btn-primary'

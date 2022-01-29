@@ -10,14 +10,18 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .app-title.navbar.navbar-expand-md
-      .navbar-brand ネタ帳
+      .navbar-brand ライブ・ネタ管理
 
       ul.navbar-nav.ml-auto
       - if current_user
-        li= link_to 'プロフィール', user_path(current_user.id), class: 'nav-link'
+        li= link_to 'プロフィールを見る', user_path(current_user.id), class: 'nav-link'
         - if current_user.role == "芸人"
           li= link_to 'ユニット作成', new_unit_path, class: 'nav-link'
-        li= link_to 'ライブ', lives_path, class: 'nav-link'
+        - if current_user.role == "スタッフ"
+          li= link_to 'ライブ関連', lives_path, class: 'nav-link'
+        - if current_user.main_unit_id
+          - str = "メインユニット<br>#{current_user.main_unit.name}"
+          li.main_unit_nav= link_to str.gsub(/\n|\r|\r\n/, "<br>").html_safe, unit_path(current_user.main_unit), class: 'nav-link'
         li= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
       - else
         li= link_to 'ユーザー登録', new_user_path, class: 'nav-link'
@@ -26,3 +30,6 @@ html
       - if flash.notice.present?
         .alert.alert-success= flash.notice
       = yield
+    footer
+      p ©️ naoya kato
+      

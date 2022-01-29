@@ -1,22 +1,35 @@
 h1.user-name = "#{@user.name}のプロフィール"
 
 table.profile-table
-  tr
+  tr.under-border
     th= User.human_attribute_name(:birthday)
     td= @user.birthday
-  tr
+  tr.under-border
     th= User.human_attribute_name(:skill)
     td= @user.skill
-  tr
+  tr.under-border
     th= User.human_attribute_name(:profile)
     td= @user.profile
+  tr
+    th  メインユニット
+    td
+      - if @user.main_unit_id
+        = Unit.find(@user.main_unit_id).name
+      - else
+        p メインユニットをプロフィール編集から登録してみよう！
 
 .belongs-unit
   h2 所属ユニット
-  ul
-    - Unit.belongs_unit(@user).each do |unit|
-      li= link_to unit.name, unit_path(unit)
+  - if @user.participations.map(&:solicitation).empty?
+    p ユニットに参加してみよう！
+    p ①ユニット作成からユニットを自分で作成する。
+    p ②ユニット作成をした相方からメンバーに追加してもらう。
+  - else
+    ul
+      - @user.participations.map(&:solicitation).each do |unit|
+        li= link_to unit.name, unit_path(unit)
+
 
 
 - if current_user.id == @user.id
-  = link_to '編集', edit_user_path, class: 'edit-btn btn-primary'
+  = link_to 'プロフィール編集', edit_user_path, class: 'edit-btn btn-primary'

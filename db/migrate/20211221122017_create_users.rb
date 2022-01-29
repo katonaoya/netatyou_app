@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :skill
       t.date :birthday
       t.text :profile
+      t.integer :main_unit_id
       
       t.timestamps
       

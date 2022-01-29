@@ -7,7 +7,7 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
     if @unit.save
       Relationship.create(solicitation_id: @unit.id, participation_id: current_user.id)
-      redirect_to user_path(current_user.id), notice: "#{@unit.name}が登録されました。"
+      redirect_to unit_path(@unit), notice: "#{@unit.name}が登録されました。"
     else
       render :new
     end

@@ -27,12 +27,14 @@
       th.dezyun  出順
       th.conbimei  コンビ名
       th.neta-name  ネタ
-      th
+      th. キャンセルボタン
     - @units&.each do |unit|
       tr
         td.dezyun= @comedians.find_by(unit_id: unit.id).turn
         td.conbimei= link_to unit.name, unit_path(unit)
-        td.neta-name= Neta.performance(unit)
+        td.neta-name
+          - if Comedian.find_by(live_id: @live_id, unit_id: unit.id)
+            = Neta.performance(unit)
         td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
 
 -if @staffs.map(&:user_id).include?(current_user.id)
@@ -44,7 +46,7 @@
     tr
       th.staff-user  ユーザー
       th.staff-position  役割
-      th
+      th キャンセルボタン
     - @staffs.each do |staff|
       tr
         td.staff-user= User.find(staff.user_id).name

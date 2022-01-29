@@ -1,4 +1,5 @@
 class LivesController < ApplicationController
+  before_action :staff_required, only: [:new, :create, :edit, :update, :koban, :koban_update]
 
   def index
     @lives = Live.all

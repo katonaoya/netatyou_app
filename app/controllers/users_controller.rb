@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to user_path(@user), notice: "#{@user.name}が登録されました。"
+      UserMailer.account_activation(@user).deliver_now
+      redirect_to login_path, notice: "#{@user.email}に認証メールを送信しました。メールアドレスにあるリンクから、メールアドレスを認証してください。"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "#{@user.name}が登録されました。"
+      redirect_to user_path(@user), notice: "#{@user.name}の情報が更新されました。"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :role, :skill, :birthday, :profile)
+    params.require(:user).permit(:name, :email, :password, :role, :skill, :birthday, :profile, :main_unit_id)
   end
 
 end

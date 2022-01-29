@@ -2,7 +2,7 @@ class RelationshipsController < ApplicationController
   def new
     @relationship = Relationship.new
     @unit = Unit.find(params[:id])
-    @users = User.where.not(id: current_user.id, id: User.member(@unit.id).map(&:id))
+    @users = User.where.not(id: current_user.id, id: Unit.member(@unit.id).map(&:id))
   end
 
   def create

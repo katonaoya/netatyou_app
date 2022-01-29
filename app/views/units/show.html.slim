@@ -1,8 +1,14 @@
 h1.unit_name = @unit.name
 
 section.unit_date
-  .unit_image
-    = @unit.image.attached? ? image_tag(@unit.image) : "画像が設定されていません"
+  .unit_image_border
+   // = image_tag 'despe.jpg', class: 'unit_image'
+    - if @unit.image.attached?
+      = image_tag(@unit.image), class: 'unit_image'
+    - else
+      p.unit_image_border 画像が設定されていません
+
+   = @unit.image.attached? ? image_tag(@unit.image) : "画像が設定されていません"
 
   .unit_profile
     = "#{Unit.human_attribute_name(:kana)}:　#{@unit.kana}"
@@ -16,12 +22,12 @@ section.unit_date
     br
     .unit_member
       p メンバー
-      - User.member(@unit.id).each do |user|
+      - @unit.solicitations.map(&:participation).each do |user|
         = link_to user.name, user_path(user)
         br
     .unit_btn
       - if current_unit.include?(@unit.id)
-        = link_to '編集', edit_unit_path, class: 'btn btn-primary'
+        = link_to 'ユニット編集', edit_unit_path, class: 'btn btn-primary'
         = link_to 'ネタ作成', new_neta_path(@unit), class: 'btn btn-primary'
         = link_to 'メンバー追加', new_relationship_path, class: 'btn btn-primary'
 br
@@ -56,6 +62,8 @@ table.table.table-hover
         tr
           td= link_to live.title, live_path(live)
           td= live.date
-          td= Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
+          td
+            - if Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id
+              = Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
           - if current_unit.include?(@unit.id)
             td= link_to 'ネタの変更', neta_change_unit_path(@unit.id, live_id:live.id), class: 'btn btn-primary chage-neta'
