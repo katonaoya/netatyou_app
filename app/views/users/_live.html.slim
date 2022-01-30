@@ -1,0 +1,19 @@
+.belongs-unit
+  h2 参加ライブ
+  - if user.staffs.empty?
+    p ライブに参加してみよう！
+    p ①ライブ関連からライブを主催する。
+    p ②ライブの主催者にスタッフとして追加してもらう。
+  - else
+    table.staff_live
+      tr.under-border
+        th.border-right ライブ名
+        th 役割
+      tr.under-border
+        - user.staffs.each do |staff|
+          td.border-right= link_to Live.find(staff.live_id).title , live_path(staff.live_id)
+          td= staff.position if staff.position
+
+    ul
+      - user.participations.map(&:solicitation).each do |unit|
+        li= link_to unit.name, unit_path(unit)

@@ -14,7 +14,7 @@ h1 ユーザー登録
     = f.email_field :email, class: 'form_control'
   .form-group
     = f.label :password
-    = f.password_field :password, class: 'form_control'
+    = f.password_field :password, :placeholder => "英数字4字以上", class: 'form_control'
   .form-group.role_button
     = f.radio_button :role, :"芸人", class: 'form_control'
     = f.label :role, "芸人"
