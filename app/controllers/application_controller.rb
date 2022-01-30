@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_url unless current_user
   end
 
+  def logout_required
+    redirect_to user_path(current_user) if current_user
+  end
+
   def geinin_required
     redirect_to user_path(current_user) unless current_user.role == "芸人"
   end
