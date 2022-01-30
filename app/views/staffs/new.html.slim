@@ -1,10 +1,10 @@
 h1 スタッフ管理
 
-- @users.each do |user|
-  = form_with model: [@live, @staff], url: staffs_path, local: true do |f|
-    .staff-edit
-      .staff-name
-        = user.name
-      = f.hidden_field :live_id, value: @live.id
-      = f.hidden_field :user_id, value: user.id
-      = f.submit '選択する', class: 'btn btn-primary'
+table
+  - @users.each do |user|
+    tr
+      th= user.name
+      td= link_to '選択する', staffs_path(live_id: params[:id], user_id: user.id), method: :post, class: 'btn btn-primary'
+
+
+

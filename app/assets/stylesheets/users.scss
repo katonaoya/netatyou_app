@@ -72,6 +72,25 @@
  }
 }
 
+.staff_live{
+  th{
+    width: 10em;
+   }
+  th, td{
+    padding: 15px;
+    // border-right: 1px solid;
+    // border-color: rgb(177, 175, 175);
+  }
+  td{
+    width: 40em;
+  }
+}
+
+.border-right{
+  border-right: 1px solid;
+  border-color: rgb(177, 175, 175);
+}
+
 .under-border{
   border-bottom: 1px solid;
   border-color: rgb(177, 175, 175);
@@ -79,8 +98,12 @@
 
 .belongs-unit{
   margin-top: 10em;
+  ul{
+    padding-left: 0px;
+  }
   li{
     list-style: none;
+    font-size: 1.3em;
   }
   p{
     margin-top: 30px;

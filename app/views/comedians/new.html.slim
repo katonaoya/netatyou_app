@@ -1,9 +1,8 @@
 h1 出演者を選択する
 
-- @units.each do |unit|
-  = form_with model: [@live, @comedian], url: comedians_path, local: true do |f|
-    = unit.name
-    = f.hidden_field :live_id, value: params[:id]
-    = f.hidden_field :unit_id, value: unit.id
-    = f.hidden_field :turn,    value: @turn
-    = f.submit '選択する', class: 'btn btn-primary'
+table
+  - @units.each do |unit|
+    tr
+      th= unit.name
+      td= link_to '選択する', comedians_path(live_id: params[:id], unit_id: unit.id, turn: @turn), method: :post, class: 'btn btn-primary'
+

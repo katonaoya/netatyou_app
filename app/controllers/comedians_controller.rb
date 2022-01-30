@@ -12,7 +12,6 @@ class ComediansController < ApplicationController
 
   def create
     @comedian = Comedian.new(comedian_params)
-
     if @comedian.save
       redirect_to live_path(params[:id])
     else
@@ -51,7 +50,7 @@ class ComediansController < ApplicationController
   private
 
   def comedian_params
-    params.require(:comedian).permit(:live_id, :unit_id, :neta_id, :turn)
+    params.permit(:live_id, :unit_id, :neta_id, :turn)
   end
 
 end

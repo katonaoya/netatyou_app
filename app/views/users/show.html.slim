@@ -18,18 +18,10 @@ table.profile-table
       - else
         p メインユニットをプロフィール編集から登録してみよう！
 
-.belongs-unit
-  h2 所属ユニット
-  - if @user.participations.map(&:solicitation).empty?
-    p ユニットに参加してみよう！
-    p ①ユニット作成からユニットを自分で作成する。
-    p ②ユニット作成をした相方からメンバーに追加してもらう。
-  - else
-    ul
-      - @user.participations.map(&:solicitation).each do |unit|
-        li= link_to unit.name, unit_path(unit)
-
-
+- if current_user.role == "芸人"
+  = render partial: 'unit', locals: { user: @user }
+- else
+  = render partial: 'live', locals: { user: @user }
 
 - if current_user.id == @user.id
   = link_to 'プロフィール編集', edit_user_path, class: 'edit-btn btn-primary'
