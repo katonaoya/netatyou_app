@@ -37,7 +37,7 @@
             = Neta.performance(unit)
         td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
 
--if @staffs.map(&:user_id).include?(current_user.id)
+-if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
   = link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
 
 .staff-itiran
@@ -52,5 +52,5 @@
         td.staff-user= User.find(staff.user_id).name
         td.staff-position= staff.position
         td= link_to 'キャンセル', staff_path(staff, live_id: @live.id), method: :delete, class: 'btn btn-primary'
--if @staffs.map(&:user_id).include?(current_user.id)
+-if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
   = link_to 'スタッフの仕事を変更する', edit_staff_path(@live), class: 'btn-primary staff-change'

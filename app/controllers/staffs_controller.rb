@@ -20,11 +20,15 @@ class StaffsController < ApplicationController
   end
 
   def update
-    staff_require.each do |id, position_params|
-      staff = Staff.find(id)
-      staff.update(position_params)
+    if staff_require
+      staff_require.each do |id, position_params|
+        staff = Staff.find(id)
+        staff.update(position_params)
+      end
+      redirect_to live_path(params[:id]), notice: "情報が更新されました。"
+    else
+      redirect_to live_path(params[:id])
     end
-    redirect_to live_path(params[:id]), notice: "情報が更新されました。"
   end
 
   def destroy

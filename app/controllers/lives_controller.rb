@@ -44,11 +44,15 @@ class LivesController < ApplicationController
   end
 
   def koban_update
-    kobans_require.each do |id, turn_params|
-      comedian = Comedian.find(id)
-      comedian.update(turn_params)
+    if kobans_require
+      kobans_require.each do |id, turn_params|
+        comedian = Comedian.find(id)
+        comedian.update(turn_params)
+      end
+      redirect_to live_path(params[:id]), notice: "情報が更新されました。"
+    else
+      redirect_to live_path(params[:id])
     end
-    redirect_to live_path(params[:id]), notice: "情報が更新されました。"
   end
 
   private
