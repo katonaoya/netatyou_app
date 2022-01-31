@@ -60,7 +60,7 @@ class NetasController < ApplicationController
   private
 
   def current_units_neta?
-    current_user == Unit.find(neta.unit_id).solicitations.map(&:participation)
+    current_user.admin? || current_user == Unit.find(neta.unit_id).solicitations.map(&:participation)
   end
 
   def neta_params

@@ -34,7 +34,7 @@ br
 br
 br
 
-- if current_unit.include?(@unit.id)
+- if current_unit.include?(@unit.id) || current_user.admin?
   h2 ネタ
   table.table.table-hover
     tbody
@@ -66,5 +66,5 @@ br
           td
             - if Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id
               = Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
-          - if current_unit.include?(@unit.id)
+          - if current_unit.include?(@unit.id) || current_user.admin?
             td= link_to 'ネタの変更', neta_change_unit_path(@unit.id, live_id:live.id), class: 'btn btn-primary chage-neta'
