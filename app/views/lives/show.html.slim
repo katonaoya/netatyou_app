@@ -16,7 +16,7 @@
       td= link_to User.find(@live.user_id).name, user_path(User.find(@live.user_id).id)
 
 .syutuen-btn
-  -if @live.user_id == current_user.id
+  -if current_user.admin? || @live.user_id == current_user.id
     = link_to '出演者を選択する', new_comedian_path, class: 'btn btn-primary'
     = link_to 'スタッフを選択する', new_staff_path, class: 'btn btn-primary'
 
