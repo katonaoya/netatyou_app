@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def admin_user?
+    redirect_to user_path(current_user) unless current_user.admin?
+  end
+
   def current_unit
     @current_unit ||= User.find(current_user.id).participations.map(&:solicitation_id)
   end

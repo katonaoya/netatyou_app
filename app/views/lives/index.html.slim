@@ -4,10 +4,14 @@ table.table.table-hover.live_table
       th ライブ名
       th 劇場
       th 開催日
+      - if current_user.admin?
+        th 削除ボタン
     - @lives.each do |live|
       tr
         td= link_to live.title, live_path(live)
         td= live.theater
         td= live.date
+        - if current_user.admin?
+          td= link_to '削除', live_path(live), method: :delete, class: 'btn btn-primary'
 
 = link_to 'ライブを主催する', new_live_path, class: 'btn-primary live-syusai-btn'

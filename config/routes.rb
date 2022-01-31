@@ -31,5 +31,7 @@ Rails.application.routes.draw do
   end
 
 resources :account_activations, only: [:edit]
+
+get '/admin_menu', to: 'admins#admin_menu'
   
 end

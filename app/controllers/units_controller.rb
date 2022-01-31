@@ -1,4 +1,7 @@
 class UnitsController < ApplicationController
+  before_action :admin_user? , only:[:index, :destroy]
+  before_action :geinin_required , only:[:new, :edit]
+
   def new
     @unit = Unit.new
   end
@@ -33,6 +36,12 @@ class UnitsController < ApplicationController
 
   def show
     @unit = Unit.find(params[:id])
+  end
+
+  def destroy
+    @unit = Unit.find(params[:id])
+    @unit.destroy
+    redirect_to units_path
   end
 
   private

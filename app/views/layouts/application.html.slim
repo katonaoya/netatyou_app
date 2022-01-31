@@ -22,6 +22,8 @@ html
         - if current_user.main_unit_id
           - str = "メインユニット<br>#{current_user.main_unit.name}"
           li.main_unit_nav= link_to str.gsub(/\n|\r|\r\n/, "<br>").html_safe, unit_path(current_user.main_unit), class: 'nav-link'
+        - if current_user.admin?
+          li= link_to '管理者メニュー', admin_menu_path, class: 'nav-link'
         li= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
       - else
         li= link_to 'ユーザー登録', new_user_path, class: 'nav-link'

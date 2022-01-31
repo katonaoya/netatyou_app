@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only:[:new, :create]
   before_action :logout_required, only:[:new, :create]
+  before_action :admin_user? , only:[:index, :destroy]
+
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -36,6 +41,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path
   end
 
   private

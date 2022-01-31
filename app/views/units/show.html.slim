@@ -34,19 +34,20 @@ br
 br
 br
 
-h2 ネタ
-table.table.table-hover
-  tbody
-    tr
-      th タイトル
-      th 小道具
-      th 時間
-  tbody
-    - @unit.netas.each do |neta|
+- if current_unit.include?(@unit.id)
+  h2 ネタ
+  table.table.table-hover
+    tbody
       tr
-        td= link_to neta.title, neta_path(neta)
-        td= neta.item
-        td= "#{neta.minute}:#{neta.second}"
+        th タイトル
+        th 小道具
+        th 時間
+    tbody
+      - @unit.netas.each do |neta|
+        tr
+          td= link_to neta.title, neta_path(neta)
+          td= neta.item
+          td= "#{neta.minute}:#{neta.second}"
 
 .unit-live
   h2 出演ライブ

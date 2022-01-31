@@ -9,7 +9,7 @@
 User.create!(
   name:       "松本人志",
   email:      "matumoto@mail.com",
-  password:   "1",
+  password:   "1111",
   role:       "芸人",
   birthday:   "1-1-1",
   activated: true,
@@ -19,7 +19,7 @@ User.create!(
 User.create!(
   name:       "浜田雅功",
   email:      "hamada@mail.com",
-  password:   "1",
+  password:   "1111",
   role:       "芸人",
   birthday:   "1-1-1",
   activated: true,
@@ -29,7 +29,7 @@ User.create!(
 User.create!(
   name:       "国崎 和也",
   email:      "kunisaki@mail.com",
-  password:   "1",
+  password:   "1111",
   role:       "芸人",
   birthday:   "1-1-1",
   activated: true,
@@ -39,10 +39,21 @@ User.create!(
 User.create!(
   name:       "川北茂澄",
   email:      "kawakita@mail.com",
-  password:   "1",
+  password:   "1111",
   role:       "芸人",
   birthday:   "1-1-1",
   activated: true,
+  activated_at: Time.zone.now
+  )
+
+User.create!(
+  name:       "加藤　直矢",
+  email:      "katonaoya@mail.com",
+  password:   "1111",
+  role:       "芸人",
+  birthday:   "1-1-1",
+  admin:      true,
+  activated:  true,
   activated_at: Time.zone.now
   )
 
