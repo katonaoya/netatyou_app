@@ -27,7 +27,8 @@
       th.dezyun  出順
       th.conbimei  コンビ名
       th.neta-name  ネタ
-      th. キャンセルボタン
+      - if User.find(@live.user_id) == current_user
+        th. キャンセルボタン
     - @units&.each do |unit|
       tr
         td.dezyun= @comedians.find_by(unit_id: unit.id).turn
@@ -35,7 +36,8 @@
         td.neta-name
           - if Comedian.find_by(live_id: @live_id, unit_id: unit.id)
             = Neta.performance(unit)
-        td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
+        - if User.find(@live.user_id) == current_user
+          td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
 
 -if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
   = link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
@@ -46,11 +48,13 @@
     tr
       th.staff-user  ユーザー
       th.staff-position  役割
-      th キャンセルボタン
+      - if User.find(@live.user_id) == current_user
+        th キャンセルボタン
     - @staffs.each do |staff|
       tr
-        td.staff-user= User.find(staff.user_id).name
+        td.staff-user= link_to User.find(staff.user_id).name, user_path(staff.user_id)
         td.staff-position= staff.position
-        td= link_to 'キャンセル', staff_path(staff, live_id: @live.id), method: :delete, class: 'btn btn-primary'
--if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
+        - if User.find(@live.user_id) == current_user
+          td= link_to 'キャンセル', staff_path(staff, live_id: @live.id), method: :delete, class: 'btn btn-primary'
+-if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin || User.find(@live.user_id) == current_user
   = link_to 'スタッフの仕事を変更する', edit_staff_path(@live), class: 'btn-primary staff-change'

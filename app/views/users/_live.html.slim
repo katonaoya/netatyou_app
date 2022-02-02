@@ -1,9 +1,8 @@
 .belongs-unit
   h2 参加ライブ
   - if user.staffs.empty?
-    p ライブに参加してみよう！
-    p ①ライブ関連からライブを主催する。
-    p ②ライブの主催者にスタッフとして追加してもらう。
+    p 参加しているライブがありません。
+    p ライブの主催者にスタッフとして追加してもらう！
   - else
     table.staff_live
       tr.under-border
@@ -13,6 +12,22 @@
         - user.staffs.each do |staff|
           td.border-right= link_to Live.find(staff.live_id).title , live_path(staff.live_id)
           td= staff.position if staff.position
+
+.belongs-unit
+  h2 主催ライブ
+  - if user.lives.empty?
+    p ライブに参加してみよう！
+    p ①ライブ関連からライブを主催する。
+    p ②ライブの主催者にスタッフとして追加してもらう。
+  - else
+    table.staff_live
+      tr.under-border
+        th.border-right ライブ名
+        th 日時
+      tr.under-border
+        - user.lives.each do |live|
+          td.border-right= link_to Live.find(live.id).title , live_path(live)
+          td= live.date
 
     ul
       - user.participations.map(&:solicitation).each do |unit|

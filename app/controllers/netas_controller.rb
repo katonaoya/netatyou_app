@@ -18,7 +18,9 @@ class NetasController < ApplicationController
 
   def show
     @neta = Neta.find(params[:id])
-    if current_units_neta?
+    if current_user.admin?
+      @neta
+    elsif Unit.find(@neta.unit_id).solicitations.map(&:participation).include?(current_user)
       @neta
     else
       redirect_to user_path(current_user)
@@ -58,10 +60,6 @@ class NetasController < ApplicationController
   end
 
   private
-
-  def current_units_neta?
-    current_user.admin? || current_user == Unit.find(neta.unit_id).solicitations.map(&:participation)
-  end
 
   def neta_params
     params.require(:neta).permit(:title, :dialogue, :item, :minute, :second, :unit_id)
