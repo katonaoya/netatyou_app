@@ -1,0 +1,13 @@
+h1= "#{@live.title}のネタ選択"
+
+table.neta-choice
+  - @netas.each do |neta|
+    = form_with model: @neta, url: neta_change_unit_path, local: true do |f|
+      tr
+        th.neta-right ネタタイトル
+        th
+      tr
+        td.neta-right= neta.title
+        = f.hidden_field :live_id, value: @live.id
+        = f.hidden_field :neta_id, value: neta.id
+        td= f.submit '選択する', class: 'btn btn-primary'

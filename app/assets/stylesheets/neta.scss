@@ -1,0 +1,39 @@
+.dialogue{
+  display: flex;
+}
+
+.neta_time{
+  display: flex;
+}
+
+.neta-choice{
+  th, td{
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 10px;
+  }
+  .neta-right{
+    border-right: 1px solid;
+    padding: 1em 50px;
+  }
+}
+
+.neta-body{
+  margin: 1em 0px;
+}
+.serihu{
+  width: 600px;
+  height: auto;
+  border: 1px solid rgb(160, 159, 159);
+  padding: 1em 0px;
+}
+
+.neta-edit{
+  padding: 10px 30px;
+  margin: 30px 50px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 20px;
+}

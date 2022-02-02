@@ -1,0 +1,133 @@
+// user/new
+#user_password{
+  margin-left: 2em;
+}
+
+#user_name{
+  margin-left: 5em;
+}
+
+#user_email{
+  width: 20em;
+}
+
+.role_button{
+  .form_control{
+  width:  12px;
+  height: 12px;
+  }
+  label{
+    margin-right: 5em;
+    margin-left: 3px;
+  }
+}
+
+
+
+
+
+// user/edit
+#user_skill{
+  margin-left: 5em;
+  width: 30em;
+}
+
+#user_birthday{
+  margin-left: 3em;
+}
+
+#user_profile{
+  margin-left: 1em;
+}
+
+.profile{
+  display: flex;
+}
+
+
+
+.user-name{
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+
+// user/show
+.profile-table{
+ th{
+  width: 10em;
+  border-right: 1px solid;
+  border-color: rgb(177, 175, 175);
+ }
+ th, td{
+   padding: 15px;
+ }
+ td{
+   width: 40em;
+   p{
+    margin-top: 30px;
+    font-size: 18px;
+    color: rgb(16, 93, 0);
+  }
+ }
+}
+
+.staff_live{
+  th{
+    width: 10em;
+   }
+  th, td{
+    padding: 15px;
+    // border-right: 1px solid;
+    // border-color: rgb(177, 175, 175);
+  }
+  td{
+    width: 40em;
+  }
+}
+
+.border-right{
+  border-right: 1px solid;
+  border-color: rgb(177, 175, 175);
+}
+
+.under-border{
+  border-bottom: 1px solid;
+  border-color: rgb(177, 175, 175);
+}
+
+.belongs-unit{
+  margin-top: 10em;
+  ul{
+    padding-left: 0px;
+  }
+  li{
+    list-style: none;
+    font-size: 1.3em;
+  }
+  p{
+    margin-top: 30px;
+    font-size: 20px;
+    color: rgb(16, 93, 0);
+  }
+}
+
+// user/edit
+
+.edit-btn{
+  margin-left: 15em;
+  padding: 5px 20px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 24px;
+  position: relative;
+  right: 5em;
+  margin-top: 40px;
+}
+
+.main_unit{
+  p{
+    font-weight: 700;
+  }
+}

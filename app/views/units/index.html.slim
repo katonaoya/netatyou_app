@@ -1,0 +1,7 @@
+h1 ユニット一覧
+
+table.user_index
+  - @units.each do |unit|
+    tr
+      th= unit.name
+      td= link_to '削除', unit_path(unit), method: :delete, class: 'btn btn-primary'

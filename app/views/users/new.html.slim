@@ -1,0 +1,25 @@
+h1 ユーザー登録
+
+- if @user.errors.present?
+  ul#error_explanation
+    - @user.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: @user, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form_control'
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form_control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, :placeholder => "英数字4字以上", class: 'form_control'
+  .form-group.role_button
+    = f.radio_button :role, :"芸人", class: 'form_control'
+    = f.label :role, "芸人"
+    = f.radio_button :role, :"スタッフ", class: 'form_control'
+    = f.label :role, "スタッフ"
+  = f.submit nil, class: 'btn btn-primary'
+
+

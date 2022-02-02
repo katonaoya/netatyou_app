@@ -1,0 +1,9 @@
+h1 香盤を変更する
+
+= form_with url: comedian_path, local: true do |f|
+  - @units.each do |unit|
+    = unit.name
+    .form-group
+      = f.label :unit.turn
+      = f.text_field :hogeturn, class: 'form_control', id: 'live_turn'
+  = f.submit '選択する', class: 'btn btn-primary'

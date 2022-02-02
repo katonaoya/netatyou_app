@@ -1,0 +1,10 @@
+h1 スタッフ管理
+
+table
+  - @users.each do |user|
+    tr
+      th= user.name
+      td= link_to '選択する', staffs_path(live_id: params[:id], user_id: user.id), method: :post, class: 'btn btn-primary'
+
+
+

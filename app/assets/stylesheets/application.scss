@@ -1,0 +1,74 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.app-title{
+  background-color: #00ff7f;
+  height: 80px;
+  font-family: "メイリオ";
+  a{
+    color: white;
+  }
+}
+
+.navbar-brand{
+  padding: 30px;
+  font-size: 40px;
+}
+
+.navbar-nav{
+  margin: 0px;
+}
+
+.navbar li:not(.main_unit_nav){
+  padding: 28px 5px;
+  margin-right: 1em;
+  list-style-type: none;
+  float: left;
+  font-size: 16px;
+  background-color:#06b45da2;
+}
+
+.main_unit_nav{
+  padding: 16.5px 5px;
+  margin-right: 1em;
+  list-style-type: none;
+  float: left;
+  font-size: 16px;
+  background-color:#06b45da2;
+  text-align: center;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.container{
+  width: 700px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+// .push{
+//   margin-bottom: 200px;
+// }
+
+
+footer{
+  background-color: #00ff7f;
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+  position: absolute;
+  p{
+    text-align: center;
+    padding-top: 40px;
+  }
+}

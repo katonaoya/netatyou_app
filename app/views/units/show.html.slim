@@ -1,0 +1,70 @@
+h1.unit_name = @unit.name
+
+section.unit_date
+  .unit_image_border
+   // = image_tag 'despe.jpg', class: 'unit_image'
+    - if @unit.image.attached?
+      = image_tag(@unit.image), class: 'unit_image'
+    - else
+      p.unit_image_border 画像が設定されていません
+
+   = @unit.image.attached? ? image_tag(@unit.image) : "画像が設定されていません"
+
+  .unit_profile
+    = "#{Unit.human_attribute_name(:kana)}:　#{@unit.kana}"
+    br
+    br
+    = "#{Unit.human_attribute_name(:birthday)}:　#{@unit.birthday}"
+    br
+    br
+    = "#{Unit.human_attribute_name(:belongs)}:　#{@unit.belongs}"
+    br
+    br
+    .unit_member
+      p メンバー
+      - @unit.solicitations.map(&:participation).each do |user|
+        = link_to user.name, user_path(user)
+        br
+    .unit_btn
+      - if current_unit.include?(@unit.id)
+        = link_to 'ユニット編集', edit_unit_path, class: 'btn btn-primary'
+        = link_to 'ネタ作成', new_neta_path(@unit), class: 'btn btn-primary'
+        = link_to 'メンバー追加', new_relationship_path, class: 'btn btn-primary'
+br
+br
+br
+
+- if current_unit.include?(@unit.id) || current_user.admin?
+  h2 ネタ
+  table.table.table-hover
+    tbody
+      tr
+        th タイトル
+        th 小道具
+        th 時間
+    tbody
+      - @unit.netas.each do |neta|
+        tr
+          td= link_to neta.title, neta_path(neta)
+          td= neta.item
+          td= "#{neta.minute}:#{neta.second}"
+
+.unit-live
+  h2 出演ライブ
+  table.table.table-hover
+    tbody
+      tr
+        th ライブタイトル
+        th 日時
+        th ネタ
+        th
+    tbody
+      - Live.appearance(@unit).each do |live|
+        tr
+          td= link_to live.title, live_path(live)
+          td= live.date
+          td
+            - if Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id
+              = Neta.find(Comedian.find_by(unit_id:@unit.id, live_id: live.id).neta_id).title
+          - if current_unit.include?(@unit.id) || current_user.admin?
+            td= link_to 'ネタの変更', neta_change_unit_path(@unit.id, live_id:live.id), class: 'btn btn-primary chage-neta'

@@ -1,0 +1,60 @@
+.live-profile
+  h1= @live.title
+
+  table
+    tr
+      th= Live.human_attribute_name(:theater)
+      td= @live.theater
+    tr
+      th= Live.human_attribute_name(:date)
+      td= @live.date
+    tr
+      th= Live.human_attribute_name(:item)
+      td= @live.item
+    tr
+      th  主催者
+      td= link_to User.find(@live.user_id).name, user_path(User.find(@live.user_id).id)
+
+.syutuen-btn
+  -if @live.user_id == current_user.id
+    = link_to '出演者を選択する', new_comedian_path, class: 'btn btn-primary'
+    = link_to 'スタッフを選択する', new_staff_path, class: 'btn btn-primary'
+
+.syutuen
+  h2 出演者
+  table
+    tr
+      th.dezyun  出順
+      th.conbimei  コンビ名
+      th.neta-name  ネタ
+      - if User.find(@live.user_id) == current_user
+        th. キャンセルボタン
+    - @units&.each do |unit|
+      tr
+        td.dezyun= @comedians.find_by(unit_id: unit.id).turn
+        td.conbimei= link_to unit.name, unit_path(unit)
+        td.neta-name
+          - if Comedian.find_by(live_id: @live_id, unit_id: unit.id)
+            = Neta.performance(unit)
+        - if User.find(@live.user_id) == current_user
+          td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
+
+-if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
+  = link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
+
+.staff-itiran
+  h2 スタッフ一覧
+  table
+    tr
+      th.staff-user  ユーザー
+      th.staff-position  役割
+      - if User.find(@live.user_id) == current_user
+        th キャンセルボタン
+    - @staffs.each do |staff|
+      tr
+        td.staff-user= link_to User.find(staff.user_id).name, user_path(staff.user_id)
+        td.staff-position= staff.position
+        - if User.find(@live.user_id) == current_user
+          td= link_to 'キャンセル', staff_path(staff, live_id: @live.id), method: :delete, class: 'btn btn-primary'
+-if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin || User.find(@live.user_id) == current_user
+  = link_to 'スタッフの仕事を変更する', edit_staff_path(@live), class: 'btn-primary staff-change'

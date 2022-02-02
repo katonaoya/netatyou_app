@@ -1,0 +1,8 @@
+h1 出演者を選択する
+
+table
+  - @units.each do |unit|
+    tr
+      th= unit.name
+      td= link_to '選択する', comedians_path(live_id: params[:id], unit_id: unit.id, turn: @turn), method: :post, class: 'btn btn-primary'
+

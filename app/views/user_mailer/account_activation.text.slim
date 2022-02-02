@@ -1,0 +1,5 @@
+= "ようこそ！#{@user.name}さん！"
+
+= "ネタ帳サービスを利用するには、以下のURLをクリックしてメールアドレスを認証してください。"
+
+= edit_account_activation_url(@user.activation_token, email: @user.email)
