@@ -15,13 +15,8 @@
       th  主催者
       td= link_to User.find(@live.user_id).name, user_path(User.find(@live.user_id).id)
 
-<<<<<<< HEAD
-.syutuen-btn
-  -if current_user.admin? || @live.user_id == current_user.id
-=======
 .syutuen-btn.margin_auto
   -if @live.user_id == current_user.id
->>>>>>> develop
     = link_to '出演者を選択する', new_comedian_path, class: 'btn btn-primary'
     = link_to 'スタッフを選択する', new_staff_path, class: 'btn btn-primary'
 
