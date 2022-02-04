@@ -1,7 +1,7 @@
 .live-profile
   h1= @live.title
 
-  table
+  table.margin_auto
     tr
       th= Live.human_attribute_name(:theater)
       td= @live.theater
@@ -15,12 +15,12 @@
       th  主催者
       td= link_to User.find(@live.user_id).name, user_path(User.find(@live.user_id).id)
 
-.syutuen-btn
+.syutuen-btn.margin_auto
   -if @live.user_id == current_user.id
     = link_to '出演者を選択する', new_comedian_path, class: 'btn btn-primary'
     = link_to 'スタッフを選択する', new_staff_path, class: 'btn btn-primary'
 
-.syutuen
+.syutuen.margin_auto
   h2 出演者
   table
     tr
@@ -34,15 +34,15 @@
         td.dezyun= @comedians.find_by(unit_id: unit.id).turn
         td.conbimei= link_to unit.name, unit_path(unit)
         td.neta-name
-          - if Comedian.find_by(live_id: @live_id, unit_id: unit.id)
-            = Neta.performance(unit)
+          - if Comedian.find_by(live_id: @live.id, unit_id: unit.id)
+            = Neta.find(Comedian.find_by(unit_id:unit.id, live_id: @live.id).neta_id).title
         - if User.find(@live.user_id) == current_user
           td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
 
 -if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
   = link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
 
-.staff-itiran
+.staff-itiran.margin_auto
   h2 スタッフ一覧
   table
     tr

@@ -14,10 +14,11 @@
   border-radius: 4px;
 }
 
+
+// live/show
 .live-profile{
   margin-bottom: 3em;
   h1{
-    margin-left: 150px;
     margin-bottom: 50px;
   }
   td{
@@ -33,21 +34,21 @@
 }
 
 .syutuen{
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   h2{
-    margin-left: 200px;
-    margin-bottom: 15px;
+    margin-top: 80px;
+    margin-bottom: 30px;
   }
   .dezyun{
     padding: 5px;
     text-align: center;
   }
   .conbimei{
-    padding: 5px 50px;
+    width: 20em;
     text-align: center;
   }
   .neta-name{
-    padding: 5px 100px;
+    width: 15em;
     text-align: center;
   }
   th, td{
@@ -56,24 +57,39 @@
 }
 
 .staff-itiran{
-  margin-bottom: 40px;
-  margin-left: 50px;
   h2{
-    margin-left: 120px;
-    margin-bottom: 15px; 
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
+  th{
+    height: 3em;
   }
   .staff-user{
-    padding: 10px;
+    width: 15em;
     text-align: center;
   }
   .staff-position{
-    padding: 10px 150px;
+    width: 23em;
     text-align: center;
   }
   th, td{
     border: 1px solid;
   }
 }
+
+.staff-change{
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  margin: 40px auto;
+  width: 15em;
+  height: 3em;
+}
+
+
+// koban
 
 .koban{
   display: flex;
@@ -98,13 +114,6 @@
   border: 1px solid transparent;
 }
 
-.staff-change{
-  display: inline-block;
-  text-align: center;
-  border-radius: 4px;
-  padding: 6px 12px;
-  border: 1px solid transparent;
-}
 
 .live-title{
   margin-left: 2em;
@@ -122,3 +131,4 @@
   margin-left: 1em;
 }
 
+// live/_form

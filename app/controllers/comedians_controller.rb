@@ -20,7 +20,6 @@ class ComediansController < ApplicationController
       else
         @turn = 1
       end
-      raise
       @comedian = Comedian.new
       @units = Unit.all
       render :new
@@ -47,10 +46,25 @@ class ComediansController < ApplicationController
     redirect_to live_path(params[:live_id])
   end
 
+  def change
+    @netas = Neta.where(unit_id: params[:id])
+    @live = Live.find(params[:live_id])
+  end
+
+  def choice
+    comedian = Comedian.find_by(live_id: params[:live_id], unit_id: params[:id])
+    comedian.update(neta_id: params[:neta_id])
+    redirect_to unit_path(params[:id])
+  end
+
   private
 
   def comedian_params
     params.permit(:live_id, :unit_id, :neta_id, :turn)
+  end
+
+  def change_params
+    params.permit(:live_id, :neta_id)
   end
 
 end

@@ -1,15 +1,18 @@
-.staff-edit{
+.staff-form{
   display: flex;
+  input{
+    width: 400px;
+  }
 }
 
 .staff-name{
-  padding: 5px 25px;
+  width: 10em;
   margin-right: 5px;
 }
 
 .staff-edit-btn{
   padding: 10px 20px;
-  margin: 30px 50px;
+  margin: 40px 200px;
   display: inline-block;
   text-align: center;
   border: 1px solid transparent;

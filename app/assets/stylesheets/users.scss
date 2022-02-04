@@ -1,4 +1,9 @@
 // user/new
+.user_new{
+  margin-left: 200px;
+  margin-top: 30px;
+}
+
 #user_password{
   margin-left: 2em;
 }
@@ -8,7 +13,11 @@
 }
 
 #user_email{
-  width: 20em;
+  width: 15em;
+}
+
+.form_control{
+  margin-bottom: 10px;
 }
 
 .role_button{
@@ -22,13 +31,13 @@
   }
 }
 
-
-
-
-
 // user/edit
+.user_edit_form{
+  margin-top: 40px;
+  margin-left: 100px;
+}
 #user_skill{
-  margin-left: 5em;
+  margin-left: 2em;
   width: 30em;
 }
 
@@ -44,8 +53,6 @@
   display: flex;
 }
 
-
-
 .user-name{
   text-align: center;
   margin-bottom: 1em;
@@ -54,6 +61,8 @@
 
 // user/show
 .profile-table{
+  width: 30em;
+  margin: 10px auto;
  th{
   width: 10em;
   border-right: 1px solid;
@@ -63,7 +72,7 @@
    padding: 15px;
  }
  td{
-   width: 40em;
+   width: 20em;
    p{
     margin-top: 30px;
     font-size: 18px;
@@ -72,14 +81,14 @@
  }
 }
 
+// user/_live
 .staff_live{
   th{
     width: 10em;
+    text-align: center;
    }
   th, td{
     padding: 15px;
-    // border-right: 1px solid;
-    // border-color: rgb(177, 175, 175);
   }
   td{
     width: 40em;
@@ -96,36 +105,55 @@
   border-color: rgb(177, 175, 175);
 }
 
+.edit-btn{
+  margin: 40px auto;
+  padding: 5px 20px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 24px;
+  right: 5em;
+}
+
+// _unit.html.slim
 .belongs-unit{
   margin-top: 10em;
-  ul{
-    padding-left: 0px;
-  }
-  li{
-    list-style: none;
-    font-size: 1.3em;
+  h2{
+    margin-bottom: 30px;
   }
   p{
     margin-top: 30px;
     font-size: 20px;
     color: rgb(16, 93, 0);
   }
+  table{
+    font-size: 18px;
+    margin: auto;
+    tr{
+      height: 40px;
+    }
+    th{
+      border-bottom: 1px rgb(177, 175, 175) solid;
+    }
+    .unit_name{
+      width: 15em;
+      border-right: 1px rgb(177, 175, 175) solid;
+    }
+    .member{
+      width: 25em;
+      text-align: center;
+    }
+    td{
+      text-align: center;
+    }
+  }
+}
+
+.user_notice{
+  margin-left: 130px;
 }
 
 // user/edit
-
-.edit-btn{
-  margin-left: 15em;
-  padding: 5px 20px;
-  display: inline-block;
-  text-align: center;
-  border-radius: 4px;
-  font-size: 24px;
-  position: relative;
-  right: 5em;
-  margin-top: 40px;
-}
-
 .main_unit{
   p{
     font-weight: 700;

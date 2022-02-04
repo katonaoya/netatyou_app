@@ -2,9 +2,11 @@ h1 ユニット編集
 
 = render partial: 'form', locals: { unit: @unit }
 
+h2 メンバー編集
+
 table.unit-delete
   tr
-    th.member-name メンバー
+    th.member-name ユーザー名
     th
   - @unit.solicitations.map(&:participation).each do |user|
     tr

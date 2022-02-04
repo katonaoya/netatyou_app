@@ -1,8 +1,9 @@
 .belongs-unit
   h2 参加ライブ
   - if user.staffs.empty?
-    p 参加しているライブがありません。
-    p ライブの主催者にスタッフとして追加してもらう！
+    .user_notice
+      p 参加しているライブがありません。
+      p ライブの主催者にスタッフとして追加してもらう！
   - else
     table.staff_live
       tr.under-border

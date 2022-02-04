@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     member do
       resources :relationships, only: [:new, :create, :destroy]
       resources :netas, except: [:index]
-      get '/neta_change', to: 'netas#change'
-      post '/neta_change', to: 'netas#choice'
+      get '/neta_change', to: 'comedians#change'
+      post '/neta_change', to: 'comedians#choice'
     end
   end
 

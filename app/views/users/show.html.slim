@@ -10,15 +10,16 @@ table.profile-table
   tr.under-border
     th= User.human_attribute_name(:profile)
     td= @user.profile
-  tr
-    th  メインユニット
-    td
-      - if @user.main_unit_id
-        = Unit.find(@user.main_unit_id).name
-      - else
-        p メインユニットをプロフィール編集から登録してみよう！
+  - if current_user.role == "芸人"
+    tr
+      th  メインユニット
+      td
+        - if @user.main_unit_id
+          = Unit.find(@user.main_unit_id).name
+        - else
+          p メインユニットをプロフィール編集から登録してみよう！
 
-- if current_user.role == "芸人"
+- if @user.role == "芸人"
   = render partial: 'unit', locals: { user: @user }
 - else
   = render partial: 'live', locals: { user: @user }
