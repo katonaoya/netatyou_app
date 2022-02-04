@@ -1,3 +1,20 @@
+.choice_table{
+  margin: 40px auto;
+  tr{
+    border-bottom: 1px solid rgb(177, 175, 175);
+    margin-bottom: 3px;
+  }
+  th{
+    width: 20em;
+    padding-left: 10em;
+    height: 4em;
+  }
+  td{
+    width: 16em;
+    padding-right: 10em;
+  }
+}
+
 .relation-name{
   padding: 15px;
 }

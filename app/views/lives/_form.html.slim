@@ -3,18 +3,19 @@
     - live.errors.full_messages.each do |message|
       li= message
 
-= form_with model: live, local: true do |f|
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form_control live-title'
-  .form-group
-    = f.label :theater
-    = f.text_field :theater, class: 'form_control live-theater'
-  .form-group
-    = f.label :date
-    = f.date_field :date, class: 'form_control live-date'
-  .form-group
-    = f.label :item
-    = f.text_field :item, class: 'form_control live-item'
-  = f.hidden_field :user_id, value: current_user.id
-  = f.submit nil, class: 'btn btn-primary'
+.live_form.margin_auto
+  = form_with model: live, local: true do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form_control live-title'
+    .form-group
+      = f.label :theater
+      = f.text_field :theater, class: 'form_control live-theater'
+    .form-group
+      = f.label :date
+      = f.date_field :date, class: 'form_control live-date'
+    .form-group
+      = f.label :item
+      = f.text_field :item, class: 'form_control live-item'
+    = f.hidden_field :user_id, value: current_user.id
+    = f.submit nil, class: 'btn btn-primary'

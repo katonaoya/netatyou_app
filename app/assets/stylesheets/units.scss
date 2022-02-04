@@ -26,14 +26,13 @@
   padding: 180px 0;
   margin-right: 5px;
   margin-bottom: 5px;
-}
-
-.unit_image{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 372.812px;
-  height: 400px;
+  img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 372.812px;
+    height: 400px;
+  }
 }
 
 .unit_profile{
@@ -52,12 +51,33 @@
 
 .unit-live{
   margin-top: 5em;
+  margin-bottom: 100px;
 }
 
+// unit/edit
 .unit-delete{
-  margin-top: 30px;
+  margin: 40px auto;
+  tr{
+    border-bottom: 1px solid rgb(177, 175, 175);
+    margin-bottom: 3px;
+  }
+  th{
+    width: 10em;
+    padding-left: 3em;
+  }
+  td{
+    width: 16em;
+  }
   .member-name{
-    margin: 30px;
+    padding-left: 4em;
+    width: 15em;
+    height: 4em;
   }
 }
 
+// unit/_form.html.slim
+.unit_form{
+  margin-left: 220px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
