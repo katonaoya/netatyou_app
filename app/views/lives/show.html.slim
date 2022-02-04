@@ -34,12 +34,12 @@
         td.dezyun= @comedians.find_by(unit_id: unit.id).turn
         td.conbimei= link_to unit.name, unit_path(unit)
         td.neta-name
-          - if Comedian.find_by(live_id: @live.id, unit_id: unit.id)
+          - if Comedian.find_by(live_id: @live.id, unit_id: unit.id).neta_id
             = Neta.find(Comedian.find_by(unit_id:unit.id, live_id: @live.id).neta_id).title
         - if User.find(@live.user_id) == current_user
           td= link_to 'キャンセル', comedian_path(Comedian.find_by(unit_id: unit.id).id, live_id: @live.id), method: :delete, class: 'btn btn-primary'
 
--if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin
+-if @staffs.map(&:user_id).include?(current_user.id) || current_user.admin || User.find(@live.user_id) == current_user
   = link_to '香盤を変更する', koban_live_path, class: 'btn btn-primary'
 
 .staff-itiran.margin_auto
