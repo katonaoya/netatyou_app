@@ -1,0 +1,7 @@
+h1= "#{@live.title}のネタ選択"
+
+table.cohice_table
+  - @netas.each do |neta|
+    tr
+      th= neta.title
+      td= link_to '選択する', neta_change_unit_path(neta_id: neta.id, live_id: @live.id), method: :post, class: 'btn btn-primary'

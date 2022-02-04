@@ -21,11 +21,13 @@
 .neta-body{
   margin: 1em 0px;
 }
+
 .serihu{
   width: 600px;
   height: auto;
   border: 1px solid rgb(160, 159, 159);
   padding: 1em 0px;
+  margin: auto;
 }
 
 .neta-edit{
@@ -36,4 +38,8 @@
   border: 1px solid transparent;
   border-radius: 4px;
   font-size: 20px;
+}
+
+.margin_auto{
+  margin: 1em auto;
 }

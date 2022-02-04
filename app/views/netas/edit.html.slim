@@ -7,6 +7,9 @@ h1 ネタ編集
   .form-group.dialogue
     = f.label :dialogue
     = f.text_area :dialogue, class: 'form_control', cols: 70, rows: 100
+  .form-group
+    = f.label :item
+    = f.text_field :item, class: 'form_control'
   .neta_time
     .form-group
       = f.label :minute
@@ -14,5 +17,5 @@ h1 ネタ編集
     .form-group
       = f.label :second
       = f.text_field :second, class: 'form_control'
-  = f.hidden_field :unit_id, value: @unit.id
+  = f.hidden_field :unit_id, value: @neta.unit_id
   = f.submit nil, class: 'btn btn-primary'

@@ -1,12 +1,13 @@
 h1 スタッフの仕事の編集
 
-= form_with url: staff_path, method: :patch do |f|
-  - @staffs.each do |staff|
-    .staff-edit
-      .staff-name
-        = User.find(staff.user_id).name
-      = f.fields_for staff, index: staff.id do |af|
-        = af.text_field :position
-        br
-  = submit_tag '更新する', class: 'btn-primary staff-edit-btn'
+.staff_edit.margin_auto
+  = form_with url: staff_path, method: :patch do |f|
+    - @staffs.each do |staff|
+      .staff-form
+        .staff-name
+          = User.find(staff.user_id).name
+        = f.fields_for staff, index: staff.id do |af|
+          = af.text_field :position
+          br
+    = submit_tag '更新する', class: 'btn-primary staff-edit-btn'
 

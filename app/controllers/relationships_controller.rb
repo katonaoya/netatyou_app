@@ -2,13 +2,13 @@ class RelationshipsController < ApplicationController
   def new
     @relationship = Relationship.new
     @unit = Unit.find(params[:id])
-    @users = User.where.not(id: current_user.id, id: Unit.member(@unit.id).map(&:id))
+    @users = User.where.not(id: current_user.id, id: @unit.member.map(&:id))
   end
 
   def create
     @relationship = Relationship.new(relationship_params)
     if @relationship.save
-      redirect_to unit_path(params[:id])
+      redirect_to unit_path(params[:id]), notice: "#{User.find(@relationship.participation.id).name}がメンバーに追加されました。"
     else
       @users = User.where.not(id: current_user.id)
       render :new
@@ -25,7 +25,7 @@ class RelationshipsController < ApplicationController
   private
 
   def relationship_params
-    params.require(:relationship).permit(:solicitation_id, :participation_id)
+    params.permit(:solicitation_id, :participation_id)
   end
 
 end

@@ -3,20 +3,21 @@
     - unit.errors.full_messages.each do |message|
       li= message
 
-= form_with model: unit, local: true do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form_control'
-  .form-group
-    = f.label :kana
-    = f.text_field :kana, class: 'form_control'
-  .form-group
-    = f.label :belongs
-    = f.text_field :belongs, class: 'form_control'
-  .form-group
-    = f.label :birthday
-    = f.date_field :birthday, class: 'form_control'
-  .form-group
-    = f.label :image
-    = f.file_field :image, class: 'form_control'
-  = f.submit nil, class: 'btn btn-primary'
+.unit_form
+  = form_with model: unit, local: true do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form_control'
+    .form-group
+      = f.label :kana
+      = f.text_field :kana, class: 'form_control'
+    .form-group
+      = f.label :belongs
+      = f.text_field :belongs, class: 'form_control'
+    .form-group
+      = f.label :birthday
+      = f.date_field :birthday, class: 'form_control'
+    .form-group
+      = f.label :image
+      = f.file_field :image, class: 'form_control'
+    = f.submit nil, class: 'btn btn-primary'

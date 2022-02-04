@@ -1,10 +1,17 @@
 .belongs-unit
   h2 所属ユニット
   - if user.participations.map(&:solicitation).empty?
-    p ユニットに参加してみよう！
-    p ①ユニット作成からユニットを自分で作成する。
-    p ②ユニット作成をした相方からメンバーに追加してもらう。
+    .user_notice
+      p ユニットに参加してみよう！
+      p ①ユニット作成からユニットを自分で作成する。
+      p ②ユニット作成をした相方からメンバーに追加してもらう。
   - else
-    ul
+    table
+      tr
+        th.unit_name ユニット名
+        th.member colspan="2" メンバー
       - user.participations.map(&:solicitation).each do |unit|
-        li= link_to unit.name, unit_path(unit)
+        tr
+          td.unit_name= link_to unit.name, unit_path(unit)
+          - unit.member.each do |user|
+            td= user.name
