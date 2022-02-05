@@ -74,8 +74,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
     port: 587,
-    user_name: 'netatyou.app@gmail.com'
-    password: 'ykggqbbqmsyyntwz'
+    user_name: 'netatyou.app@gmail.com',
+    password: 'ykggqbbqmsyyntwz',
     authentication: :login
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
