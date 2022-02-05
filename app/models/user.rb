@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :password, presence: true, length: {minimum: 4}
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: %w(芸人 スタッフ) }
 
   has_many :participations, class_name: "Relationship", foreign_key: "participation_id"

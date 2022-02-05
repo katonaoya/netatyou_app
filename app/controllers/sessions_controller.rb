@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user), notice: 'ログインしました。'
     else
-      flash.alert = 'メールアドレスかパスワードが正しくありません。'
+      flash.alert = 'メールアドレスかパスワードが正しくありません。またはメールアドレスが認証されていません。'
       render :new
     end
   end

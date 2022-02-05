@@ -1,5 +1,5 @@
 class NetasController < ApplicationController
-  before_action :geinin_required
+  before_action :comedian_required
   before_action
 
   def new
