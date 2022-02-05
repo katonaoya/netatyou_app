@@ -71,14 +71,11 @@ Rails.application.configure do
   host = 'netatyou-app.herokuapp.com'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   ActionMailer::Base.smtp_settings = {
-    address:"smtp.gmail.com",
+    address: 'smtp.gmail.com',
     domain: 'gmail.com',
-    port:587,
-    #gmailのユーザアカウント（xxxx@gmail.com)※念のため、credentials.yml.enc行き
-    user_name: Rails.application.credentials.gmail[:user_name],
-    #gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得、必ずcredentials.yml.endに設定を！！
-    password: Rails.application.credentials.gmail[:password],
-    #パスワードをBase64でエンコード
+    port: 587,
+    user_name: Rails.application.credentials.gmail[:user_name],  #Gmailアドレス（credentials.yml.encに記載）
+    password: Rails.application.credentials.gmail[:password],  #アプリパスワード（credentials.yml.encに記載）
     authentication: :login
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
