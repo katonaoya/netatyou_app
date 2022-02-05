@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     redirect_to user_path(current_user) if current_user
   end
 
-  def geinin_required
+  def comedian_required
     redirect_to user_path(current_user) unless current_user.admin? || current_user.role == "芸人"
   end
 

@@ -14,7 +14,7 @@
 
 User.create!(
   name:       "松本　人志",
-  email:      "matumoto@mail.com",
+  email:      "matumoto@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1963-9-8",
@@ -27,7 +27,7 @@ User.create!(
 
 User.create!(
   name:       "浜田　雅功",
-  email:      "hamada@mail.com",
+  email:      "hamada@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1963-5-11",
@@ -40,7 +40,7 @@ User.create!(
 
 User.create!(
   name:       "内村　光良",
-  email:      "utimura@mail.com",
+  email:      "utimura@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1964-7-22",
@@ -53,7 +53,7 @@ User.create!(
 
 User.create!(
   name:       "南原　清隆",
-  email:      "nannbara@mail.com",
+  email:      "nannbara@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1965-2-13",
@@ -66,7 +66,7 @@ User.create!(
 
 User.create!(
   name:       "上田　晋也",
-  email:      "ueda@mail.com",
+  email:      "ueda@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1970-5-7",
@@ -79,7 +79,7 @@ User.create!(
 
 User.create!(
   name:       "有田　哲平",
-  email:      "arita@mail.com",
+  email:      "arita@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1971-2-3",
@@ -92,7 +92,7 @@ User.create!(
 
 User.create!(
   name:       "太田　光",
-  email:      "oota@mail.com",
+  email:      "oota@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1965-5-13",
@@ -105,7 +105,7 @@ User.create!(
 
 User.create!(
   name:       "田中　裕二",
-  email:      "tanaka@mail.com",
+  email:      "tanaka@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1965-1-10",
@@ -118,7 +118,7 @@ User.create!(
 
 User.create!(
   name:       "川島　省吾",
-  email:      "kawasima@mail.com",
+  email:      "kawasima@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1977-2-2",
@@ -131,7 +131,7 @@ User.create!(
 
 User.create!(
   name:       "加藤　直矢",
-  email:      "katonaoya@mail.com",
+  email:      "katonaoya@example.com",
   password:   "1111",
   role:       "芸人",
   birthday:   "1-1-1",
@@ -142,7 +142,7 @@ User.create!(
 
 User.create!(
   name:       "加地　倫三",
-  email:      "kazi@mail.com",
+  email:      "kazi@example.com",
   password:   "1111",
   role:       "スタッフ",
   birthday:   "1969-3-13",
@@ -154,7 +154,7 @@ User.create!(
 
 User.create!(
   name:       "佐久間 宣行",
-  email:      "sakuma@mail.com",
+  email:      "sakuma@example.com",
   password:   "1111",
   role:       "スタッフ",
   birthday:   "1975-11-23",
@@ -166,7 +166,7 @@ User.create!(
 
 User.create!(
   name:       "藤井 健太郎",
-  email:      "huzii@mail.com",
+  email:      "huzii@example.com",
   password:   "1111",
   role:       "スタッフ",
   birthday:   "1980-4-16",

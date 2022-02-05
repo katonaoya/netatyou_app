@@ -1,6 +1,6 @@
 class UnitsController < ApplicationController
   before_action :admin_user? , only:[:index, :destroy]
-  before_action :geinin_required , only:[:new, :edit]
+  before_action :comedian_required , only:[:new, :edit]
 
   def new
     @unit = Unit.new
