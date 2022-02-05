@@ -1,12 +1,12 @@
 h1.unit_name = @unit.name
 
 section.unit_date
-  .unit_image_border
+  / .unit_image_border
    = image_tag 'despe.jpg', class: 'unit_image'
-    / - if @unit.image.attached?
-    /   = image_tag(@unit.image), class: 'unit_image'
-    / - else
-    /   p.unit_image_border 画像が設定されていません
+    - if @unit.image.attached?
+      = image_tag(@unit.image), class: 'unit_image'
+    - else
+      p.unit_image_border 画像が設定されていません
 
    = @unit.image.attached? ? image_tag(@unit.image) : "画像が設定されていません"
 
