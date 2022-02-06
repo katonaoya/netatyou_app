@@ -9,6 +9,6 @@ class CreateStaffs < ActiveRecord::Migration[6.1]
     end
     add_index :staffs, :user_id
     add_index :staffs, :live_id
-    add_index :staffs, [:live_id, :user_id]
+    add_index :staffs, %i[live_id user_id]
   end
 end

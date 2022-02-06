@@ -4,9 +4,9 @@ class Live < ApplicationRecord
   has_many :comedians
   has_many :staffs
 
-# appearance = 出演する
+  # appearance = 出演する
   scope :appearance, ->(unit) { find(Comedian.where(unit_id: unit.id).map(&:live_id)) }
-  scope :line_up , ->(live_id) { Unit.find(Live.find(live_id).comedians.order(turn: :asc).map(&:unit_id))}
+  scope :line_up, ->(live_id) { Unit.find(Live.find(live_id).comedians.order(turn: :asc).map(&:unit_id)) }
 
   validates :title, presence: true
   validates :theater, presence: true

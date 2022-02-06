@@ -1,13 +1,12 @@
 class ComediansController < ApplicationController
-
   def new
     @comedian = Comedian.new
     @units = Unit.where.not(id: Live.line_up(params[:id]).map(&:id))
-    if Comedian.find_by(live_id: params[:id])
-      @turn = Comedian.where(live_id: params[:id]).map(&:turn).max+1
-    else
-      @turn = 1
-    end
+    @turn = if Comedian.find_by(live_id: params[:id])
+              Comedian.where(live_id: params[:id]).map(&:turn).max + 1
+            else
+              1
+            end
   end
 
   def create
@@ -15,11 +14,11 @@ class ComediansController < ApplicationController
     if @comedian.save
       redirect_to live_path(params[:id])
     else
-      if Comedian.find_by(live_id: params[:id])
-        @turn = Comedian.where(live_id: params[:id]).map(&:turn).max+1
-      else
-        @turn = 1
-      end
+      @turn = if Comedian.find_by(live_id: params[:id])
+                Comedian.where(live_id: params[:id]).map(&:turn).max + 1
+              else
+                1
+              end
       @comedian = Comedian.new
       @units = Unit.all
       render :new
@@ -66,5 +65,4 @@ class ComediansController < ApplicationController
   def change_params
     params.permit(:live_id, :neta_id)
   end
-
 end

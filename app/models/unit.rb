@@ -7,13 +7,12 @@ class Unit < ApplicationRecord
   validates :birthday, presence: true
   validates :belongs, presence: true
 
-  has_many :solicitations, class_name: "Relationship", foreign_key: "solicitation_id"
+  has_many :solicitations, class_name: 'Relationship', foreign_key: 'solicitation_id'
   has_many :netas
   has_many :comedians
-  has_many :users, foreign_key: "main_user_id"
+  has_many :users, foreign_key: 'main_user_id'
 
   def member
     solicitations.map(&:participation)
   end
-  
 end

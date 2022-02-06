@@ -25,7 +25,7 @@ class StaffsController < ApplicationController
         staff = Staff.find(id)
         staff.update(position_params)
       end
-      redirect_to live_path(params[:id]), notice: "情報が更新されました。"
+      redirect_to live_path(params[:id]), notice: '情報が更新されました。'
     else
       redirect_to live_path(params[:id])
     end
@@ -36,6 +36,7 @@ class StaffsController < ApplicationController
     @staff.destroy
     redirect_to live_path(params[:live_id])
   end
+
   private
 
   def staff_params

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only:[:new, :create]
-  before_action :logout_required, only:[:new, :create]
-  before_action :admin_user? , only:[:index, :destroy]
+  skip_before_action :login_required, only: %i[new create]
+  before_action :logout_required, only: %i[new create]
+  before_action :admin_user?, only: %i[index destroy]
 
   def index
     @users = User.all
@@ -9,10 +9,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-  end
-
-  def index
-    @users = User.all
   end
 
   def create
@@ -26,18 +22,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "#{@user.name}の情報が更新されました。"
     else
       render :edit
     end
   end
-
 
   def show
     @user = User.find(params[:id])
@@ -54,5 +49,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :role, :skill, :birthday, :profile, :main_unit_id)
   end
-
 end

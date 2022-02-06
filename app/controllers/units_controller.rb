@@ -1,6 +1,6 @@
 class UnitsController < ApplicationController
-  before_action :admin_user? , only:[:index, :destroy]
-  before_action :comedian_required , only:[:new, :edit]
+  before_action :admin_user?, only: %i[index destroy]
+  before_action :comedian_required, only: %i[new edit]
 
   def new
     @unit = Unit.new
@@ -17,13 +17,17 @@ class UnitsController < ApplicationController
   end
 
   def edit
-    @unit = Unit.find(params[:id])
+    if Unit.find(params[:id]).member.include?(current_user)
+      @unit = Unit.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def update
     @unit = Unit.find(params[:id])
     @unit.image.attach(params[:unit][:image])
-    if @unit.update(unit_params)
+    if @unit.member.include?(current_user) && @unit.update(unit_params)
       redirect_to unit_path(@unit), notice: "#{@unit.name}が登録されました。"
     else
       render :edit
@@ -49,5 +53,4 @@ class UnitsController < ApplicationController
   def unit_params
     params.require(:unit).permit(:name, :kana, :belongs, :birthday, :image)
   end
-
 end

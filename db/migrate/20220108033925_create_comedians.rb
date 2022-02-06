@@ -11,8 +11,8 @@ class CreateComedians < ActiveRecord::Migration[6.1]
     add_index :comedians, :live_id
     add_index :comedians, :unit_id
     add_index :comedians, :neta_id
-    add_index :comedians, [:live_id, :unit_id]
-    add_index :comedians, [:live_id, :neta_id]
-    add_index :comedians, [:unit_id, :neta_id]
+    add_index :comedians, %i[live_id unit_id]
+    add_index :comedians, %i[live_id neta_id]
+    add_index :comedians, %i[unit_id neta_id]
   end
 end

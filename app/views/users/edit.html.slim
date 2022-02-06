@@ -16,6 +16,9 @@ h1 プロフィール編集
     .form-group
       = f.label :skill
       = f.text_field :skill, class: 'form_control'
+    .form-group
+      = f.label :birthday
+      = f.date_field :birthday, class: 'form_control'
     .form-group.main_unit
       p メインユニット
       - @user.participations.map(&:solicitation).each do |unit|

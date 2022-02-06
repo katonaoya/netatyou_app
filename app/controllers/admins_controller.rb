@@ -1,7 +1,5 @@
 class AdminsController < ApplicationController
-
-  def admin_menu
-  end
+  def admin_menu; end
 
   def user_management
     @users = User.all
@@ -14,5 +12,4 @@ class AdminsController < ApplicationController
   def live_management
     @live = Live.all
   end
-
 end

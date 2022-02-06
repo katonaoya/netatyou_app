@@ -1,6 +1,5 @@
 class NetasController < ApplicationController
-  before_action :comedian_required
-  before_action
+  before_action :comedian_required, only: %i[new create edit update]
 
   def new
     @neta = Neta.new
@@ -27,8 +26,7 @@ class NetasController < ApplicationController
     end
   end
 
-  def index
-  end
+  def index; end
 
   def edit
     @neta = Neta.find(params[:id])
@@ -55,6 +53,4 @@ class NetasController < ApplicationController
   def neta_params
     params.require(:neta).permit(:title, :dialogue, :item, :minute, :second, :unit_id)
   end
-
-
 end
