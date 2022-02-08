@@ -1,5 +1,5 @@
 class LivesController < ApplicationController
-  before_action :staff_required, only: [:new, :create, :edit, :update, :koban, :koban_update]
+  before_action :staff_required, only: %i[new create edit update koban koban_update]
 
   def index
     @lives = Live.all
@@ -49,7 +49,7 @@ class LivesController < ApplicationController
         comedian = Comedian.find(id)
         comedian.update(turn_params)
       end
-      redirect_to live_path(params[:id]), notice: "情報が更新されました。"
+      redirect_to live_path(params[:id]), notice: '情報が更新されました。'
     else
       redirect_to live_path(params[:id])
     end
@@ -64,5 +64,4 @@ class LivesController < ApplicationController
   def kobans_require
     params.permit(comedians: [:turn])[:comedians]
   end
-
 end

@@ -13,7 +13,6 @@ class RelationshipsController < ApplicationController
       @users = User.where.not(id: current_user.id)
       render :new
     end
-
   end
 
   def destroy
@@ -27,5 +26,4 @@ class RelationshipsController < ApplicationController
   def relationship_params
     params.permit(:solicitation_id, :participation_id)
   end
-
 end

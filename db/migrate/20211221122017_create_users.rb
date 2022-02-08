@@ -9,9 +9,9 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.date :birthday
       t.text :profile
       t.integer :main_unit_id
-      
+
       t.timestamps
-      
+
       t.index :email, unique: true
     end
   end

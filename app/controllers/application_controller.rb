@@ -24,12 +24,11 @@ class ApplicationController < ActionController::Base
     redirect_to user_path(current_user) if current_user
   end
 
-  def geinin_required
-    redirect_to user_path(current_user) unless current_user.admin? || current_user.role == "芸人"
+  def comedian_required
+    redirect_to user_path(current_user) unless current_user.admin? || current_user.role == '芸人'
   end
 
   def staff_required
-    redirect_to user_path(current_user) unless current_user.admin? || current_user.role == "スタッフ"
+    redirect_to user_path(current_user) unless current_user.admin? || current_user.role == 'スタッフ'
   end
-
 end
