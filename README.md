@@ -8,26 +8,24 @@
 ## 機能
 ### ○ 芸人
 - 芸人同士でコンビを組んで、情報を共有する（ネタ・ライブ情報）
+- 一人の芸人が様々なユニットを組んでそれぞれの情報を管理できる。
 - 自分のライブの出演状況がどうなっているのかを把握することができたり、どのライブでどのネタをやるのかを一覧で見ることができるようにする。
-- 過去にやったネタがどこかにいってしまうといったことや、ライブでなんのネタをやったのかを忘れてしまうことがあるので、それらを管理したい。
+
+![unit](./学んだこと/ユニット画像.png)
 
 ### ○スタッフ
 - ライブを開催するにあたり、ライブ情報の管理を行いやすくする。
+- 複数のスタッフにリアルタイムで情報共有を行うことができる。
 
-* Ruby version
+![unit](./学んだこと/ライブ.png)
 
-* System dependencies
+## 使用バージョン
+Ruby 3.0.2
+Rails 6.1.4.4
 
-* Configuration
+## テーブル設計
+https://github.com/katonaoya/netatyou_app/blob/develop/学んだこと/テーブル設計.md
 
-* Database creation
+## heroku
+https://netatyou-app.herokuapp.com/users/new
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
